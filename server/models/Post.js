@@ -7,6 +7,7 @@ const { Schema, model } = require('mongoose');
 // postText {String, required, minlength 1, maxlength 10000}
 // createdAt {Date, default, get}
 // petUsername {String, required}
+// image {String}
 // comments [commentSchema]
 // getters true
 
