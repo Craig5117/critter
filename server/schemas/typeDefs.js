@@ -10,14 +10,14 @@ const { gql } = require('apollo-server-express');
 // age 
 // sex 
 // bio 
-// humanStatus 
-// posts 
+// relationshipStatus 
+// tails 
 // friends
 // friendCount 
 
-// type POST
+// type tail
 // _id
-// postText 
+// tailText 
 // createdAt 
 // petUsername 
 // comments
@@ -37,14 +37,14 @@ const { gql } = require('apollo-server-express');
 // me: Pet
 // pets: [Pet]
 // pet(petUsername: String!): Pet
-// posts(petUsername: String): [Post]
-// post(_id: ID!): Post
+// tails(petUsername: String): [Tail]
+// tail(_id: ID!): Tail
 // }
 
 // type Mutation
 // login
 // addPet
-// addPost
+// addTail
 // addComment
 // addFriend
 // addProfileImage(imageUrl: String!): User
