@@ -2,9 +2,87 @@ const { Schema, model} = require('mongoose');
 const bcrypt = require('bcrypt');
 
 // petSchema
-// username {String, required, unique, trim}
-// email {String, required, unique, match}
-// password {String, required, minlength: 8}
+const petSchema = new Schema(
+    {
+        petUsername: {
+            type: String,
+            required: true,
+            unique: true,
+            trim: true
+        },  
+        email: {
+            type: String,
+            required: true,
+            unique: true,
+            match: [/.+@.+\..+/, 'Must match an email address!']
+        },
+        password: {
+            type: String,
+            required: true,
+            minlength: 8
+        },
+        petType: {
+            type: String,
+            required: true,
+            trim: true
+        },
+        image: {
+            type: String
+        },
+        age: {
+            type: Number
+        },
+        sex: {
+            type: String,
+            required: true
+        },
+        bio: {
+            type: String,
+            required: true
+        },
+        relationshipStatus: {
+            type: String
+        },
+        tails: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Tail'
+            }
+        ],
+        friends: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Pet'
+            }
+        ]
+    },
+    {
+        toJSON: {
+          virtuals: true
+        }
+    }
+);
+
+petSchema.pre('save', async function(next) {
+    if (this.isNew || this.isModified('password')) {
+      const saltRounds = 10;
+      this.password = await bcrypt.hash(this.password, saltRounds);
+    }
+    next();
+  });
+
+petSchema.methods.isCorrectPassword = async function(password) {
+    return bcrypt.compare(password, this.password);
+  };
+
+petSchema.virtual('friendCount').get(function() {
+    return this.friends.length;
+  });
+
+  const Pet = model('Pet', petSchema);
+  module.exports = Pet;
+  
+// petUsername {String, required, unique, trim}
 // petType {String, required, trim}
 // image {String}
 // age {Number}
