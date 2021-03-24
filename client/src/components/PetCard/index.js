@@ -7,9 +7,10 @@ import Row from 'react-bootstrap/Row';
 
 function PetCard() {
   return (
-    <Card style={{ width: '18rem' }}>
+      <Col>
+    <Card className="petCard" style={{ width: '18rem' }}>
       <Row className="px-4">
-        <Col xs={3} md={4}>
+        <Col xs={4} md={4}>
           <Row>
             <Image
               className="w-100"
@@ -21,9 +22,9 @@ function PetCard() {
             <Card.Title>ElsaMoo123 {'petUsername'}</Card.Title>
           </Row>
         </Col>
-        <Col xs={3} md={8}>
+        <Col xs={7} md={8}>
           <div>
-            <i class="fas fa-venus"></i>
+            <i className="fas fa-venus"></i>
             <p>Age: 7</p>
             <p>Relationship Status: Not interested</p>
           </div>
@@ -38,6 +39,7 @@ function PetCard() {
         </Card.Text>
       </Card.Body>
     </Card>
+    </Col>
   );
 }
 
