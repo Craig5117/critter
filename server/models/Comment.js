@@ -1,29 +1,29 @@
-const { Schema, model, Model } = require('mongoose');
+const { Schema } = require('mongoose');
 const dateFormat = require("../utils/dateFormat");
 
 // date formatting required here too
-const CommentSchema = new Schema(
+const commentSchema = new Schema(
     {
         writtenBy: {
-          type: String
+          type: String,
+          required: true
         },
-        commentBody: {
-          type: String
+        commentText: {
+          type: String,
+          required: 'You must add text to your comment!',
+          minlength: 1,
+          maxlength: 3000
         },
         createdAt: {
           type: Date,
           default: Date.now,
           get: createdAtVal => dateFormat(createdAtVal)
         },
-        // use ReplySchema to validate data for a reply
-        replies: [ReplySchema]
       },
       {
         toJSON: {
-          virtuals: true,
           getters: true
         },
-        id: false
       }
 )
 

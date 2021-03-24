@@ -2,14 +2,16 @@ const { Schema, model } = require('mongoose');
 const commentSchema = require('./Comment');
 // need to add date formatting feel free to use your own or copy one that we have already used
 const dateFormat = require('../utils/dateFormat');
-const { create } = require('./Comment');
+
 
 // postSchema
-const postSchema = new Schema(
+const tailSchema = new Schema(
     {
-        postText: {
-            type: DataTypes.STRING(10000),
-            required: true
+        tailText: {
+            type: String,
+            required: 'You need add text to your Tail',
+            minlength: 1,
+            maxlength: 10000,
         },
         createdAt:{
             type: Date,
@@ -17,7 +19,7 @@ const postSchema = new Schema(
             get: createdAtVal => dateFormat(createdAtVal)
         },
         petUsername: {
-            type: DataTypes.STRING,
+            type: String,
             required: true
         },
         comments: [commentSchema]
@@ -27,16 +29,15 @@ const postSchema = new Schema(
           virtuals: true,
           getters: true
         },
-        id: false
-      }
+    }
 )
 
 commentSchema.virtual('commentCount').get(function() {
     return this.comments.length;
   });
 
-const post = ('Post', postSchema);
-module.exports = post;
+const Tail = model('Tail', tailSchema);
+module.exports = Tail;
 
 // postText {String, required, minlength 1, maxlength 10000}
 // createdAt {Date, default, get}

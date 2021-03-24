@@ -1,6 +1,5 @@
-const pet = require('./Pet');
-const comment = require('./Comment');
-const post = require('./Post');
-const user = require('./User');
+const Pet = require('./Pet');
+const Tail = require('./Tail');
 
-module.exports = {pet,comment,post,user};
+
+module.exports = { Pet, Tail };
