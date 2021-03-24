@@ -1,14 +1,28 @@
 import React, { useState } from 'react';
 import Image from 'react-bootstrap/Image';
+const Compress = require('compress.js');
+
 
 function ProfileImage () {
     const [image, setImage] = useState('');
     const [loading, setLoading] = useState(false);
-
+    const compress = new Compress();
     const uploadImage = async (e) => {
         const files = e.target.files;
+        const resizedImg = await compress.compress([files[0]], {
+            size: 1,
+            quality: .75,
+            maxWidth: 320,
+            maxHeight: 320,
+            resize: true,
+        })
+        const img = resizedImg[0];
+        const base64str = img.data
+        const imgExt = img.ext
+        const resizedFile = await Compress.convertBase64ToFile(base64str, imgExt)
+
         const data = new FormData();
-        data.append('file', files[0]);
+        data.append('file', resizedFile);
         data.append('upload_preset', 'critter');
         setLoading(true)
         const res = await fetch (
