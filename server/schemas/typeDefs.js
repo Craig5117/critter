@@ -13,12 +13,12 @@ type Pet {
     bio: String
     relationshipStatus: String
     tails: [Tail]
-    friends: [PET]
+    friends: [Pet]
     friendCount: Int
 }
 
 type Tail {
-    _id: id
+    _id: ID
     tailText: String
     createdAt: Date
     petUsername: String
@@ -34,7 +34,7 @@ type Comment {
 }
 
 type Auth {
-    token: ID
+    token: ID!
     pet: Pet
 }
 
@@ -46,42 +46,14 @@ type Query {
     tail(_id: ID!): Tail
     }
 
-type Mutation
+type Mutation {
     login(email: String!, password: String!): Auth
-    addPet(username: String!, email: String!, password: String!)
+    addPet(username: String!, email: String!, password: String!): Auth
     addTail(tailText: String!): Tail
-    addComment(tailId: ID!)
-    addFriend()
+    addComment(tailId: ID!, commentText: String!): Tail
+    addFriend(friendId: ID!): User
     addProfileImage(imageUrl: String!): User
+}
 `;
-// type PET
-// _id
-// username
-// email
-// petType 
-// image 
-// age 
-// sex 
-// bio 
-// relationshipStatus 
-// tails 
-// friends
-// friendCount 
 
-// type tail
-// _id
-// tailText 
-// createdAt 
-// petUsername 
-// comments
-// commentCount
-
-// type COMMENT
-// _id
-// commentText
-// createdAt
-// petUsername 
-
-// type Auth
-// token
-// pet
+module.exports = typeDefs;
