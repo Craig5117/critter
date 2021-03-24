@@ -1,6 +1,59 @@
 const { gql } = require('apollo-server-express');
 
-// const typeDefs = gql `
+const typeDefs = gql `
+
+type Pet {
+    _id: ID
+    username: String
+    email: String
+    petType: String
+    image: String
+    age: Int
+    sex: String
+    bio: String
+    relationshipStatus: String
+    tails: [Tail]
+    friends: [PET]
+    friendCount: Int
+}
+
+type Tail {
+    _id: id
+    tailText: String
+    createdAt: Date
+    petUsername: String
+    comments: [Comment]
+    commentCount: Int
+}
+
+type Comment {
+    _id: ID
+    commentText: String
+    createdAt: Date
+    petUsername: String
+}
+
+type Auth {
+    token: ID
+    pet: Pet
+}
+
+type Query {
+    me: Pet
+    pets: [Pet]
+    pet(petUsername: String!): Pet
+    tails(petUsername: String): [Tail]
+    tail(_id: ID!): Tail
+    }
+
+type Mutation
+    login(email: String!, password: String!): Auth
+    addPet(username: String!, email: String!, password: String!)
+    addTail(tailText: String!): Tail
+    addComment(tailId: ID!)
+    addFriend()
+    addProfileImage(imageUrl: String!): User
+`;
 // type PET
 // _id
 // username
@@ -32,20 +85,3 @@ const { gql } = require('apollo-server-express');
 // type Auth
 // token
 // pet
-
-// type Query {
-// me: Pet
-// pets: [Pet]
-// pet(petUsername: String!): Pet
-// tails(petUsername: String): [Tail]
-// tail(_id: ID!): Tail
-// }
-
-// type Mutation
-// login
-// addPet
-// addTail
-// addComment
-// addFriend
-// addProfileImage(imageUrl: String!): User
-// `;
