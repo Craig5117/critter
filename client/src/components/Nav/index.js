@@ -14,6 +14,7 @@ function Navigation() {
         {/* <Navbar.Brand href="#home">Navbar</Navbar.Brand> */}
         <Nav className="mr-auto">
           <Nav.Link href="/">Home</Nav.Link>
+          <Nav.Link href="/profile">My Profile</Nav.Link>
           <Nav.Link href="/signup">Signup</Nav.Link>
           <Nav.Link href="/login">Login</Nav.Link>
         </Nav>
