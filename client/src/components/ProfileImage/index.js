@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Image from 'react-bootstrap';
+import Image from 'react-bootstrap/Image';
 
 function ProfileImage () {
     const [image, setImage] = useState('');
@@ -20,6 +20,7 @@ function ProfileImage () {
         )
         const file = await res.json();
         setImage(file.secure_url)
+        console.log(file.secure_url)
         setLoading(false)
     }
     return (
