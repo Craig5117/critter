@@ -12,7 +12,7 @@ function ProfileImage () {
         data.append('upload_preset', 'critter');
         setLoading(true)
         const res = await fetch (
-            '	https://api.cloudinary.com/v1_1/critter-cloud/image/upload',
+            '	https://api.cloudinary.com/v1_1/critter-cloud/image/upload/',
             {
                 method: 'POST',
                 body: data
@@ -29,7 +29,7 @@ function ProfileImage () {
        <input aria-labelledby="upload-heading" name="file" type="file" placeholder="Upload an image" onChange={uploadImage} />
         {loading ? (
             <h4>loading</h4>
-        ): (<Image src={image} style={{width: '300px'}} rounded></Image>)
+        ): (<Image src={image} style={{width: '300px'}} roundedCircle ></Image>)
         }
         </div>
     )

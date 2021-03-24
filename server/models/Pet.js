@@ -10,7 +10,7 @@ const bcrypt = require('bcrypt');
 // age {Number}
 // sex {String, required}
 // bio {string, required}
-// adoptable {boolean}
+// humanStatus {string}
 // posts [{ref Post}]
 // friends [{ ref Pet}]
 // include a virtual for friendCount see logic at the bottom of user in Deep-Thoughts
