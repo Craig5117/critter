@@ -20,7 +20,7 @@ type Pet {
 type Tail {
     _id: ID
     tailText: String
-    createdAt: Date
+    createdAt: String
     petUsername: String
     comments: [Comment]
     commentCount: Int
@@ -29,7 +29,7 @@ type Tail {
 type Comment {
     _id: ID
     commentText: String
-    createdAt: Date
+    createdAt: String
     petUsername: String
 }
 
@@ -51,8 +51,8 @@ type Mutation {
     addPet(username: String!, email: String!, password: String!): Auth
     addTail(tailText: String!): Tail
     addComment(tailId: ID!, commentText: String!): Tail
-    addFriend(friendId: ID!): User
-    addProfileImage(imageUrl: String!): User
+    addFriend(friendId: ID!): Pet
+    addProfileImage(imageUrl: String!): Pet
 }
 `;
 

@@ -31,5 +31,5 @@ const commentSchema = new Schema(
 // petUsername {String, required}
 // createdAt {Date, default, get}
 // getters true
-const Comment = model('Comment', commentSchema);
-module.exports = Comment;
+
+module.exports = commentSchema;
