@@ -28,7 +28,7 @@ const commentSchema = new Schema(
 )
 
 // commentText {String, required, maxlength 3000}
-// petUsername {String, required}
+// username {String, required}
 // createdAt {Date, default, get}
 // getters true
 

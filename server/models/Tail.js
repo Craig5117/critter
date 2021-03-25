@@ -18,7 +18,7 @@ const tailSchema = new Schema(
             default: Date.now,
             get: createdAtVal => dateFormat(createdAtVal)
         },
-        petUsername: {
+        username: {
             type: String,
             required: true
         },
@@ -41,7 +41,7 @@ module.exports = Tail;
 
 // postText {String, required, minlength 1, maxlength 10000}
 // createdAt {Date, default, get}
-// petUsername {String, required}
+// username {String, required}
 // comments [commentSchema]
 // getters true
 

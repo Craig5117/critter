@@ -21,7 +21,7 @@ type Tail {
     _id: ID
     tailText: String
     createdAt: String
-    petUsername: String
+    username: String
     comments: [Comment]
     commentCount: Int
 }
@@ -30,7 +30,25 @@ type Comment {
     _id: ID
     commentText: String
     createdAt: String
-    petUsername: String
+    username: String
+}
+
+
+type Query {
+    me: Pet
+    pets: [Pet]
+    pet(username: String!): Pet
+    tails(username: String): [Tail]
+    tail(_id: ID!): Tail
+    }
+
+type Mutation {
+    login(email: String!, password: String!): Auth
+    addPet(username: String!, email: String!, password: String!, petType: String!, image: String, age: String, sex: String!, bio: String!, relationshipStatus: String): Auth
+    addTail(tailText: String!): Tail
+    addComment(tailId: ID!, commentText: String!): Tail
+    addFriend(friendId: ID!): Pet
+    addProfileImage(imageUrl: String!): Pet
 }
 
 type Auth {
@@ -38,22 +56,6 @@ type Auth {
     pet: Pet
 }
 
-type Query {
-    me: Pet
-    pets: [Pet]
-    pet(petUsername: String!): Pet
-    tails(petUsername: String): [Tail]
-    tail(_id: ID!): Tail
-    }
-
-type Mutation {
-    login(email: String!, password: String!): Auth
-    addPet(username: String!, email: String!, password: String!): Auth
-    addTail(tailText: String!): Tail
-    addComment(tailId: ID!, commentText: String!): Tail
-    addFriend(friendId: ID!): Pet
-    addProfileImage(imageUrl: String!): Pet
-}
 `;
 
 module.exports = typeDefs;
