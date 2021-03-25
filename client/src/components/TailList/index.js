@@ -10,10 +10,10 @@ function TailsList (props) {
    const { tail } = props;
    return(
     <div>   
-    <Col lg={6}>
+    <Col xs={11}>
     <Card className="petCard">
       <div className="d-flex flex-wrap px-4">
-        <Col xs={7} md={2}>
+        <Col xs={7} md={4} lg={2}>
           <div>
             <Image
               className="w-100"
@@ -33,7 +33,7 @@ function TailsList (props) {
       </Card.Body>
         </Col>
       </div>
-      <Card.Footer><p>{tail.petUsername}</p></Card.Footer>
+      <Card.Footer><p>{tail.username}</p></Card.Footer>
     </Card>
     </Col>
    </div>
