@@ -12,6 +12,18 @@ function Home() {
       petUsername: 'FluffyEars99',
       commentCount: 34
     },
+    {
+      tailText: 'Chased the mailman again today. He fell over the garbage can, lol.',
+      createdAt: 'Mar 12th, 2021 at 8:00 am',
+      petUsername: 'BigDog64',
+      commentCount: 56
+    },
+    {
+      tailText: 'Swam around my tank and stared out at the world around me.',
+      createdAt: 'Mar 13th, 2021 at 9:20 pm',
+      petUsername: 'Jaws345',
+      commentCount: 34
+    },
   ];
 
   return (
@@ -19,9 +31,13 @@ function Home() {
       <div>
         This is the Home Page. Maybe we should put the latest Posts here?
       </div>
-      <ProfileImage />
-      <PetCard />
-      <TailList />
+      {dbTails.map((tail, i) => (
+          <TailList 
+          tail={tail}
+          i={i}
+          key={i}/> 
+      ))}
+      
     </div>
   );
 }
