@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Image from 'react-bootstrap/Image';
+import './profileImage.css';
 const Compress = require('compress.js');
+
 
 
 function ProfileImage () {
@@ -39,8 +41,8 @@ function ProfileImage () {
     }
     return (
         <div>
-            <label htmlFor="image-upload"><Image
-            className="w-25"
+            <label htmlFor="image-upload" id="image-upload-label"><Image
+            className="w-100"
               src="https://res.cloudinary.com/critter-cloud/image/upload/v1616599800/critter/pjcea1yvidbctrgnnbru.jpg"
               roundedCircle
             /></label>

@@ -1,10 +1,10 @@
 import React from 'react';
-import ProfileImage from '../components/ProfileImage';
-import PetCard from '../components/PetCard';
+// import ProfileImage from '../components/ProfileImage';
+// import PetCard from '../components/PetCard';
 import TailList from '../components/TailList';
 
 function Home() {
-  const dbPets = [];
+//   const dbPets = [];
   const dbTails = [
     {
       tailText: 'Slept on the couch all day. My human keeps running the vacuum. Humans are so weird.',

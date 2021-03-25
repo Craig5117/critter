@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
-import Col from 'react-bootstrap/Col';
+// import Col from 'react-bootstrap/Col';
 // see the React Bootstrap docs on the Navbar component,
 // especially the section labelled color schemes
 // add as={Link} to Nav.Link so it will work with react-router
@@ -21,7 +21,7 @@ function Navigation() {
       </Navbar>
       <Form inline>
         <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-        <Button variant="outline-primary">Search</Button>
+        <Button variant="outline-primary">Search by Pet Type</Button>
       </Form>
     </div>
   );
