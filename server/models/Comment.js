@@ -4,7 +4,7 @@ const dateFormat = require("../utils/dateFormat");
 // date formatting required here too
 const commentSchema = new Schema(
     {
-        writtenBy: {
+        username: {
           type: String,
           required: true
         },
