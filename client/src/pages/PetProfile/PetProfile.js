@@ -5,11 +5,12 @@ import ProfileImage from '../../components/ProfileImage';
 
 
 function PetProfile() {
+    const userParam = undefined;
     return(
         <div>
             <Col className="profile-image">
+            {userParam ? (<Image></Image>) : ( <ProfileImage />)}
             
-             <ProfileImage />
             </Col>
         </div>
     )

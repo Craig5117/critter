@@ -1,0 +1,10 @@
+#image-upload-label {
+    max-width: 200px;
+    max-height: 200px;
+    display: flex;
+    margin-right: 0;
+}
+
+#image-upload-label:hover {
+    cursor: pointer;
+}
