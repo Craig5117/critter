@@ -39,8 +39,12 @@ function ProfileImage () {
     }
     return (
         <div>
-        <h3 id="upload-heading">Upload Image</h3>
-       <input aria-labelledby="upload-heading" name="file" type="file" placeholder="Upload an image" onChange={uploadImage} />
+            <label htmlFor="image-upload"><Image
+            className="w-25"
+              src="https://res.cloudinary.com/critter-cloud/image/upload/v1616599800/critter/pjcea1yvidbctrgnnbru.jpg"
+              roundedCircle
+            /></label>
+       <input style={{display:"none"}} name="file" id="image-upload" type="file" placeholder="Upload an image" onChange={uploadImage} />
         {loading ? (
             <h4>loading</h4>
         ): (<Image src={image} style={{width: '300px'}} roundedCircle ></Image>)

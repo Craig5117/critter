@@ -4,31 +4,35 @@ import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container'
 
 function PetCard() {
   return (
-    <Card style={{ width: '18rem' }}>
-      <Row className="px-4">
-        <Col xs={3} md={4}>
-          <Row>
+<Container className="d-flex flex-wrap">
+    <Col xs={11} md={5} lg={4}>
+    <Card className="petCard">
+      <div className="d-flex flex-wrap px-4">
+        <Col xs={11} md={11} lg={6}>
+          <div>
             <Image
               className="w-100"
               src="https://res.cloudinary.com/critter-cloud/image/upload/v1616599800/critter/pjcea1yvidbctrgnnbru.jpg"
               roundedCircle
             />
-          </Row>
-          <Row>
-            <Card.Title>ElsaMoo123 {'petUsername'}</Card.Title>
-          </Row>
-        </Col>
-        <Col xs={3} md={8}>
+          </div>
           <div>
-            <i class="fas fa-venus"></i>
+            
+          </div>
+        </Col>
+        <Col xs={11} lg={6}>
+          <div>
+          <p>ElsaMoo123 {'petUsername'}</p>
+            <i className="fas fa-venus"></i>
             <p>Age: 7</p>
             <p>Relationship Status: Not interested</p>
           </div>
         </Col>
-      </Row>
+      </div>
       <Card.Body>
         <Card.Text>
         {'// Bio Here //'}
@@ -38,6 +42,9 @@ function PetCard() {
         </Card.Text>
       </Card.Body>
     </Card>
+    </Col>
+  
+    </Container>
   );
 }
 
