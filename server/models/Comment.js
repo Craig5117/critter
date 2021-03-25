@@ -4,7 +4,7 @@ const dateFormat = require("../utils/dateFormat");
 // date formatting required here too
 const commentSchema = new Schema(
     {
-        writtenBy: {
+        username: {
           type: String,
           required: true
         },
@@ -28,8 +28,8 @@ const commentSchema = new Schema(
 )
 
 // commentText {String, required, maxlength 3000}
-// petUsername {String, required}
+// username {String, required}
 // createdAt {Date, default, get}
 // getters true
-const Comment = model('Comment', commentSchema);
-module.exports = Comment;
+
+module.exports = commentSchema;

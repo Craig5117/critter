@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 // petSchema
 const petSchema = new Schema(
     {
-        petUsername: {
+        username: {
             type: String,
             required: true,
             unique: true,
@@ -27,7 +27,8 @@ const petSchema = new Schema(
             trim: true
         },
         image: {
-            type: String
+            type: String,
+            default: 'https://res.cloudinary.com/critter-cloud/image/upload/v1616599800/critter/pjcea1yvidbctrgnnbru.jpg'
         },
         age: {
             type: Number
@@ -82,10 +83,10 @@ petSchema.virtual('friendCount').get(function() {
   const Pet = model('Pet', petSchema);
   module.exports = Pet;
   
-// petUsername {String, required, unique, trim}
+//username {String, required, unique, trim}
 // petType {String, required, trim}
 // image {String}
-// age {Number}
+// age {Int}
 // sex {String, required}
 // bio {string, required}
 // humanStatus {string}
