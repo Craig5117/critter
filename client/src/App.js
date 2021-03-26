@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import PetProfile from './pages/PetProfile/PetProfile';
+import SingleTail from './pages/SingleTail';
 
 const client = new ApolloClient({
   request: (operation) => {
@@ -34,6 +35,7 @@ function App() {
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/profile" component={PetProfile} />
+              <Route exact path="/view-tail" component={SingleTail} /> 
             </Switch>
           </div>
         </div>
