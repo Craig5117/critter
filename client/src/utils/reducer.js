@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import petsReducer from './features/pets/petsSlice';
 
 const rootReducer = combineReducers({
-    currentPetType: petsReducer,
+    pets: petsReducer,
 })
 
 export default rootReducer;

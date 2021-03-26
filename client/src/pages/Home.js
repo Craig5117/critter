@@ -6,18 +6,18 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_PETS_BASIC, QUERY_TAILS } from '../utils/queries';
+import { useSelector } from 'react-redux';
 
 function Home() {
     const { data: pets } = useQuery(QUERY_PETS_BASIC)
     const [dbPets, setDbPets] = useState([])
     const { data: tails } = useQuery(QUERY_TAILS)
     const [dbTails, setDbTails] = useState([])
-    
+    const currentPetType = useSelector(state => state.pets.currentPetType)
     // tails setter
     useEffect(() => {
         if (tails) {
             setDbTails(tails)
-            console.log(tails)
         }
     }, [tails, setDbTails])
 
@@ -25,9 +25,16 @@ function Home() {
     useEffect(() => {
         if(pets) {
             setDbPets(pets)
-            console.log(pets)
         }
     }, [pets, setDbPets ])
+
+    function filterPets() {
+        if(!currentPetType) {
+            return dbPets.pets;
+        }
+        return dbPets.pets.filter((pet) => pet.petType === currentPetType);
+    }
+    
     
 //   const dbPets = [
 //     {
@@ -92,11 +99,10 @@ function Home() {
           {!dbPets.pets ? (
               <div>Loading...</div>
           ) :
-            dbPets.pets.map((pet, i) => (
+            filterPets().map((pet) => (
                 <PetCard 
                 pet={pet}
-                i={i}
-                key={i}/>
+                key={pet._id}/>
             )) 
           }
       </Col>

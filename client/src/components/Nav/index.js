@@ -6,7 +6,7 @@ import Nav from 'react-bootstrap/Nav';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_PET_TYPES } from '../../utils/queries';
 // import './nav.css'
@@ -18,34 +18,40 @@ import { QUERY_PET_TYPES } from '../../utils/queries';
 
 function Navigation() {
   const dispatch = useDispatch();
-  function handleClick(id) {
+  function handleClick(name) {
     dispatch({
       type: 'pets/UPDATE_CURRENT_TYPE',
-      payload: id,
+      payload: name,
     });
   }
 
-  const { data: types } = useQuery(QUERY_PET_TYPES)
-  const [petTypes, setPetTypes] = useState([])
+  function clearFilter () {
+    dispatch({
+        type: 'pets/UPDATE_CURRENT_TYPE',
+        payload: '',
+      });
+  }
+  const { data: types } = useQuery(QUERY_PET_TYPES);
+//   const [petTypes, setPetTypes] = useState([]);
 
   useEffect(() => {
-      if(types) {
-          setPetTypes(types.petTypes)
-      }
-  }, [types, setPetTypes])
+    if (types) {
+    //   setPetTypes(types.petTypes);
+      dispatch({
+          type: 'pets/UPDATE_PET_TYPES',
+          payload: types.petTypes
+      })
+    }
+  }, [types, dispatch]);
 
-//   const petTypes = [
-//     { _id: 123, name: 'Dog' },
-//     { _id: 456, name: 'Cat' },
-//     { _id: 789, name: 'Fish' },
-//   ];
+  const petTypes = useSelector(state => state.pets.petTypes)
+
   const [showPetFilter, setShowPetFilter] = useState(false);
   useEffect(() => {
     if (window.location.pathname === '/') {
       setShowPetFilter(true);
     }
   }, [setShowPetFilter]);
-  console.log(window.location.pathname);
   return (
     <div className="nav">
       <Navbar className="w-100">
@@ -64,11 +70,14 @@ function Navigation() {
       <div className="d-flex justify-content-end w-100 pr-5">
         {showPetFilter && (
           <NavDropdown title="View by Pet Type" id="basic-nav-dropdown">
+              <NavDropdown.Item onSelect={() => {
+                  clearFilter();
+              }}>All</NavDropdown.Item>
             {petTypes.map((type) => (
               <NavDropdown.Item
                 key={type._id}
                 onSelect={() => {
-                  handleClick(type._id);
+                  handleClick(type.name);
                 }}
               >
                 {type.name}

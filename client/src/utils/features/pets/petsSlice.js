@@ -1,7 +1,9 @@
 const initialState = {
-    petTypes: [{_id: 123, name: "Dog"}, {_id: 456, name: "Cat"}, {_id: 789, name: "Fish"}],
+    
+    petTypes: [],
     currentPetType: ''
 }
+// petsList: [],
 
 export default function petsReducer(state = initialState, action) {
     switch (action.type) {
@@ -11,6 +13,18 @@ export default function petsReducer(state = initialState, action) {
                 currentPetType: action.payload
             }
         }
+        case 'pets/UPDATE_PET_TYPES': {
+            return {
+                ...state,
+                petTypes: [...action.payload]
+            }
+        }
+        // case 'pets/UPDATE_PETS': {
+        //    return {
+        //         ...state,
+        //         petsList: [...action.payload]
+        //    } 
+        // }
         // addPetType ?
         default: 
             return state;
