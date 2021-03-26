@@ -5,11 +5,23 @@ import Image from 'react-bootstrap/Image';
 import Col from 'react-bootstrap/Col';
 // import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container'
+import './petCard.css'
 
-function PetCard() {
+function PetCard(props) {
+    const { pet } = props;
+    function renderSexSymbol() {
+        if(pet.sex === 'female') {
+            return (
+                <i className="fas fa-venus"></i>
+            )
+        }
+        return (
+            <i className="fas fa-mars"></i>
+        )
+    }
   return (
-<Container className="d-flex flex-wrap">
-    <Col xs={3} md={3} lg={3}>
+
+    <Col xs={2} md={2} lg={3} className="px-1">
     <Card className="petCard">
       
         
@@ -19,14 +31,13 @@ function PetCard() {
               src="https://res.cloudinary.com/critter-cloud/image/upload/v1616599800/critter/pjcea1yvidbctrgnnbru.jpg"
             />    
       <Card.Body>
-        <p>ElsaMoo123 {'username'}</p>
-        <i className="fas fa-venus"></i>
-            <p>Relationship Status: Not interested</p>
+        <p className="username mb-1">{pet.username}</p>
+        {renderSexSymbol()}
+        <p className="mb-1">{pet.petType}</p>
+        <p className="rel-status"><i className="fas fa-heart"></i>: {pet.relationshipStatus}</p>
       </Card.Body>
     </Card>
     </Col>
-  
-    </Container>
   );
 }
 

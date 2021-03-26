@@ -8,28 +8,38 @@ import { useQuery } from '@apollo/react-hooks';
 import { QUERY_PETS_BASIC, QUERY_TAILS } from '../utils/queries';
 
 function Home() {
-    const { loadingPets, petData } = useQuery(QUERY_PETS_BASIC)
+    const { loadingPets, data: pets } = useQuery(QUERY_PETS_BASIC)
     const { loadingTails, data: tails } = useQuery(QUERY_TAILS)
     const [dbTails, setDbTails] = useState([])
+    const [dbPets, setDbPets] = useState([])
+    // tails setter
     useEffect(() => {
         if (tails) {
             setDbTails(tails)
             console.log(tails)
         }
-    }, [tails, setDbTails, loadingTails])
+    }, [tails, setDbTails])
+
+    // pets setter
+    useEffect(() => {
+        if(pets) {
+            setDbPets(pets)
+            console.log(pets)
+        }
+    }, [pets, setDbPets ])
     
-  const dbPets = [
-    {
-        username:  "FluffyEars99",
-        petType: "Dog",
-        age: 3,
-        sex: "male",
-        relationshipStatus: "In a committed relationship with my human.",
-        image: "https://res.cloudinary.com/critter-cloud/image/upload/v1616599800/critter/pjcea1yvidbctrgnnbru.jpg",
-        bio: "Friendly Cocker Spaniel who enjoys long walks in the park with my human, Emily.", 
+//   const dbPets = [
+//     {
+//         username:  "FluffyEars99",
+//         petType: "Dog",
+//         age: 3,
+//         sex: "male",
+//         relationshipStatus: "In a committed relationship with my human.",
+//         image: "https://res.cloudinary.com/critter-cloud/image/upload/v1616599800/critter/pjcea1yvidbctrgnnbru.jpg",
+//         bio: "Friendly Cocker Spaniel who enjoys long walks in the park with my human, Emily.", 
     
-    },
-];
+//     },
+// ];
 //   const dbTails = [
 //     {
 //       tailText: 'Slept on the couch all day. My human keeps running the vacuum. Humans are so weird.',
@@ -76,8 +86,18 @@ function Home() {
             ))
           }
       </Col>
-      <Col xs={11} md={6}>
-          <PetCard />
+      
+      <Col xs={11} md={6} className="d-flex flex-wrap petCard-container">
+          {!dbPets.pets ? (
+              <div>Loading...</div>
+          ) :
+            dbPets.pets.map((pet, i) => (
+                <PetCard 
+                pet={pet}
+                i={i}
+                key={i}/>
+            )) 
+          }
       </Col>
       </Row>
     </div>

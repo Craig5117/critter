@@ -1,3 +1,22 @@
 .petCard {
-    width: 300px;
+    word-wrap: normal;
+    height: 375px;
+}
+
+.petCard:hover {
+    word-wrap: break-word;
+}
+
+.username, .rel-status {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.username:hover {
+    overflow:visible;
+}
+
+.petCard-container {
+    padding-right: 2em;
 }
