@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { Pet, Tail } = require('../models');
+const { Pet, Tail, petType } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -42,6 +42,10 @@ const resolvers = {
       // Tail (single tail)
       tail: async (parent, { _id }) => {
         return Tail.findOne({ _id });
+      },
+      // petTypes
+      petTypes: async () => {
+        return petType.find()
       }
     },
     Mutation: {
