@@ -7,6 +7,7 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container'
 import './petCard.css'
 
+
 function PetCard(props) {
     const { pet } = props;
     function renderSexSymbol() {
@@ -28,7 +29,7 @@ function PetCard(props) {
           
       <Card.Img variant="top" 
               className="w-100"
-              src="https://res.cloudinary.com/critter-cloud/image/upload/v1616599800/critter/pjcea1yvidbctrgnnbru.jpg"
+              src={pet.image}
             />    
       <Card.Body>
         <p className="username mb-1">{pet.username}</p>
