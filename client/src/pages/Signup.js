@@ -26,7 +26,7 @@ function Signup() {
       const { data } = await addPet({
         variables: {...formState } 
       });
-      Auth.login(data.addUser.token);
+      Auth.login(data.addPet.token);
       // console.log(formState)
     } catch (e) {
       console.error(e)
