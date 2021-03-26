@@ -8,10 +8,11 @@ import { useQuery } from '@apollo/react-hooks';
 import { QUERY_PETS_BASIC, QUERY_TAILS } from '../utils/queries';
 
 function Home() {
-    const { loadingPets, data: pets } = useQuery(QUERY_PETS_BASIC)
-    const { loadingTails, data: tails } = useQuery(QUERY_TAILS)
-    const [dbTails, setDbTails] = useState([])
+    const { data: pets } = useQuery(QUERY_PETS_BASIC)
     const [dbPets, setDbPets] = useState([])
+    const { data: tails } = useQuery(QUERY_TAILS)
+    const [dbTails, setDbTails] = useState([])
+    
     // tails setter
     useEffect(() => {
         if (tails) {

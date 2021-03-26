@@ -128,3 +128,12 @@ export const QUERY_PET = gql`
     }
   }
 `;
+
+export const QUERY_PET_TYPES = gql`
+    query {
+    petTypes {
+      _id
+      name
+    }
+  }
+`;
