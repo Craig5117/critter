@@ -1,6 +1,7 @@
 const db = require('./connection');
 const { Pet, Tail, petType} = require('../models');
 
+
 db.once('open', async () => {
     await petType.deleteMany();
 
@@ -21,7 +22,7 @@ db.once('open', async () => {
 
     await Pet.deleteMany();
 
-    const pets = await Pet.insertMany([
+    const pets = await Pet.create([
         // Dogs
         {
             username: 'Fido',

@@ -8,7 +8,8 @@
     "start:prod": "cd server && npm start",
     "start:dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
-    "heroku-postbuild": "cd client && npm run build"
+    "heroku-postbuild": "cd client && npm run build",
+    "seed": "cd server && node config/seeds.js"
   },
   "dependencies": {
     "if-env": "^1.0.4"

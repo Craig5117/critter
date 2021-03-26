@@ -27,8 +27,8 @@ export const QUERY_ME = gql`
 `;
 
 export const QUERY_TAILS = gql`
-  query tails($username: String) {
-    tails(username: $username) {
+  query {
+      tails {
       _id
       tailText
       createdAt
