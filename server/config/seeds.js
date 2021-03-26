@@ -25,7 +25,7 @@ db.once('open', async () => {
     const pets = await Pet.create([
         // Dogs
         {
-            username: 'Fido',
+            username: 'Test-Fido',
             email: 'bonelover@gmail.com',
             password: 'test12345',
             petType: 'Dog',

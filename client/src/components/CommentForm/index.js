@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
-import { ADD_Comment } from '../../utils/mutations';
+import { ADD_COMMENT } from '../../utils/mutations';
 
 const CommentForm = ({ tailId }) => {
   const [commentBody, setBody] = useState('');
