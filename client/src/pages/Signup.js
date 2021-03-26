@@ -1,50 +1,93 @@
-import React from 'react';
-import { Form, Button } from 'react-bootstrap';
-import { validateEmail } from '../utils/helpers';
-// import { useMutation } from '@apollo/react-hooks';
-// import { ADD_PET } from '../utils/mutations';
+import React, {useState} from 'react';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+// import { validateEmail } from '../utils/helpers';
+import { useMutation } from '@apollo/react-hooks';
+import { ADD_PET } from '../utils/mutations';
 import Auth from '../utils/auth';
 
-function Signup () {
-    return(
-        <Form>
-  <Form.Group controlId="exampleForm.ControlInput1">
-    <Form.Label>Enter your email address</Form.Label>
-    <Form.Control type="email" placeholder="name@example.com" />
-  </Form.Group>
-  <Form.Group controlId="formBasicPassword">
-    <Form.Label>Enter a password that is at least 8 characters</Form.Label>
-    <Form.Control type="password" placeholder="Password" />
-  </Form.Group>
-  <Form.Group controlId="exampleForm.ControlSelect1">
-    <Form.Label>Example select</Form.Label>
-    <Form.Control as="select">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </Form.Control>
-  </Form.Group>
-  <Form.Group controlId="exampleForm.ControlSelect2">
-    <Form.Label>Example multiple select</Form.Label>
-    <Form.Control as="select" multiple>
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </Form.Control>
-  </Form.Group>
-  <Form.Group controlId="exampleForm.ControlTextarea1">
-    <Form.Label>Example textarea</Form.Label>
-    <Form.Control as="textarea" rows={3} />
-  </Form.Group>
-  <Button variant="primary" type="submit">
-    Submit
-  </Button>
-</Form>
-    ) 
+function Signup() {
+  const [formState, setFormState] = useState({ email: '', username: '', password: '', sex: '', age: '', petType: '', bio: ''})
+  const [addPet, {error}] = useMutation(ADD_PET);
+  
+  function handleChange (event) {
+    const { name, value} = event.target;
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+    // console.log(value)
+  };
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const { data } = await addPet({
+        variables: {...formState } 
+      });
+      Auth.login(data.addUser.token);
+      // console.log(formState)
+    } catch (e) {
+      console.error(e)
+    }
+  };
+  return (
+    <Container className="pb-5">
+    <Form onSubmit={handleFormSubmit}>
+      <Form.Group controlId="formEmail">
+        <Form.Label>Enter your email address</Form.Label>
+        <Form.Control name="email" type="email" placeholder="name@example.com" onChange={handleChange}/>
+      </Form.Group>
+      <Form.Group controlId="formUsername">
+        <Form.Label>Enter a unique username</Form.Label>
+        <Form.Control name="username" type="text" placeholder="Username" onChange={handleChange}/>
+      </Form.Group>
+      <Form.Group controlId="formPassword">
+        <Form.Label>Enter a password that is at least 8 characters</Form.Label>
+        <Form.Control name="password" type="password" placeholder="Password" onChange={handleChange}/>
+      </Form.Group>
+      <Form.Group controlId="formMaleOrFemale">
+        <Form.Label>Are you a male or female pet?</Form.Label>
+        <Form.Control as="select" name="sex" onChange={(handleChange)}>
+          <option defaultValue="">
+          </option>
+          <option>male</option>
+          <option>female</option>
+        </Form.Control>
+        <Form.Group controlId="formAge">
+        <Form.Label>How old are you in human years?</Form.Label>
+        <Form.Control type="text" placeholder="Age" onChange={handleChange}/>
+      </Form.Group>
+      </Form.Group>
+      <Form.Group controlId="formPetType">
+        <Form.Label>What type of pet are you?</Form.Label>
+        <Form.Control name="petType" as="select" onChange={handleChange}>
+          <option defaultValue="" value="">
+          </option>
+          <option>Dog</option>
+          <option>Cat</option>
+          <option>Fish</option>
+          <option>Lizard</option>
+          <option>Snake</option>
+          <option>Cow</option>
+          <option>Pig</option>
+          <option>Sheep</option>
+          <option>Horse</option>
+          <option>Chicken</option>
+        </Form.Control>
+      </Form.Group>
+      <Form.Group  controlId="formBiography">
+        <Form.Label>Tell everyone a little bit about yourself</Form.Label>
+        <Form.Control name="bio" as="textarea" rows={3} onChange={handleChange}/>
+      </Form.Group>
+      <Button variant="primary" type="submit">
+        Submit
+      </Button>
+      {error && <div>Sign up failed</div>}
+    </Form>
+    </Container>
+  );
 }
 
 export default Signup;
