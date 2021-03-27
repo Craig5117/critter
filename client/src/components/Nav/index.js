@@ -45,7 +45,7 @@ function Navigation() {
   }, [types, dispatch]);
 
   const petTypes = useSelector(state => state.pets.petTypes)
-
+  // this would be a good case for redux to handle
   const [showPetFilter, setShowPetFilter] = useState(false);
   useEffect(() => {
     if (window.location.pathname === '/') {
@@ -55,7 +55,6 @@ function Navigation() {
   return (
     <div className="nav">
       <Navbar className="w-100">
-        {/* <Navbar.Brand href="#home">Navbar</Navbar.Brand> */}
         <Nav className="mr-auto">
           <Nav.Link href="/">Home</Nav.Link>
           <Nav.Link href="/profile">My Profile</Nav.Link>

@@ -1,17 +1,27 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 // import { validateEmail } from '../utils/helpers';
-import { useMutation } from '@apollo/react-hooks';
+import { useMutation, useQuery } from '@apollo/react-hooks';
 import { ADD_PET } from '../utils/mutations';
+import { QUERY_PET_TYPES } from '../utils/queries'
 import Auth from '../utils/auth';
 
 function Signup() {
   const [validated, setValidated] = useState(false);
   const [formState, setFormState] = useState({ email: '', username: '', password: '', sex: '', age: '', petType: '', bio: ''})
   const [addPet, {error}] = useMutation(ADD_PET);
-  
+  const { data: types } = useQuery(QUERY_PET_TYPES);
+  const [petTypes, setPetTypes] = useState([]);
+
+  useEffect(() => {
+    if (types) {
+      setPetTypes(types.petTypes)
+    }
+  }, [types, setPetTypes])
+
+
   function handleChange (event) {
     const { name, value} = event.target;
     setFormState({
@@ -71,16 +81,9 @@ function Signup() {
         <Form.Control required name="petType" as="select" onChange={handleChange}>
           <option defaultValue="" value="">
           </option>
-          <option>Dog</option>
-          <option>Cat</option>
-          <option>Fish</option>
-          <option>Lizard</option>
-          <option>Snake</option>
-          <option>Cow</option>
-          <option>Pig</option>
-          <option>Sheep</option>
-          <option>Horse</option>
-          <option>Chicken</option>
+          {petTypes.map((type) => (
+            <option key={type._id}>{type.name}</option>
+          ))}
         </Form.Control>
       </Form.Group>
       <Form.Group  controlId="formBiography">
