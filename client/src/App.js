@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import PetProfile from './pages/PetProfile/PetProfile';
 import SingleTail from './pages/SingleTail';
+import NoMatch from "./pages/NoMatch";
 
 const client = new ApolloClient({
   request: (operation) => {
@@ -36,6 +37,7 @@ function App() {
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/profile" component={PetProfile} />
               <Route exact path="/view-tail" component={SingleTail} /> 
+              <Route component={NoMatch} />
             </Switch>
           </div>
         </div>
