@@ -1,6 +1,16 @@
 .petCard {
     word-wrap: normal;
     height: 375px;
+    background-color: #badefc;
+    margin-top: 1em;
+}
+
+.username {
+    color: #badefc;
+    font-weight: bolder;
+    background-color: #9443b1;
+    margin-bottom: 0%;
+    font-size: 100%;
 }
 
 .petCard:hover {
@@ -19,4 +29,18 @@
 
 .petCard-container {
     padding-right: 2em;
+}
+
+.heart {
+    color: red;
+}
+
+.image {
+    margin-top: 0%;
+}
+
+.petBody {
+    color: #2688e3;
+    font-size: 100%;
+    font-weight: bolder;
 }
