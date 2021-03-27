@@ -7,12 +7,14 @@
     * [pet](#pet)
     * [tails](#tails)
     * [tail](#tail)
+    * [petTypes](#petTypes)
 * [Mutations](#mutations)
     * [addPet](#addPet)
     * [login](#login)
     * [addTail](#addTail)
     * [addComment](#addComment)
     * [addFriend](#addFriend)
+    * []
 
 
 
@@ -141,6 +143,16 @@ query tail($id: ID!) {
   ```
   Requires: tail's `_id`
 
+  ### petTypes
+  ```
+  query {
+    petTypes {
+      _id
+      name
+    }
+  }
+  ```
+
   ## Mutations
 
 
@@ -227,5 +239,33 @@ mutation addComment($tailId: ID!, $commentText: String!) {
   }
   ```
   Requires: `_id` of pet you want to add, must be logged in with `token`
+
+  ### addProfileImage
+  ```
+  mutation addProfileImage($imageURL: String!) {
+    addProfileImage(imageURL: $imageURL) {
+     _id,
+      username
+      email
+      petType
+      age
+      sex
+      bio
+    	image
+      relationshipStatus
+    friends {
+        _id
+        username
+      }
+      tails {
+        _id
+        tailText
+        createdAt
+        commentCount
+      }
+    }
+  }
+  ```
+  Requires: `imageURL` and needs login token so it knows what pet to update.
 
 

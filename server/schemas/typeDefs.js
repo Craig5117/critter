@@ -55,7 +55,7 @@ type Mutation {
     addTail(tailText: String!): Tail
     addComment(tailId: ID!, commentText: String!): Tail
     addFriend(friendId: ID!): Pet
-    addProfileImage(imageUrl: String!): Pet
+    addProfileImage(imageURL: String!): Pet
 }
 
 type Auth {

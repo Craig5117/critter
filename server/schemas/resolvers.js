@@ -120,9 +120,22 @@ const resolvers = {
             }
           
             throw new AuthenticationError('You need to be logged in!');
-          }
+          },
 
-        // Add a Profile Image???
+        // Add a Profile Image
+        addProfileImage: async (parent, { imageURL }, context) => {
+          if (context.user) {
+        
+            const updatedUser = await Pet.findByIdAndUpdate(
+              { _id: context.user._id },
+              { image: context.user.image = imageURL }
+            );
+        
+            return updatedUser;
+          }
+        
+          throw new AuthenticationError('You need to be logged in!');
+        }
 
     }
   };
