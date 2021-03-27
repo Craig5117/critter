@@ -22,20 +22,20 @@ function PetCard(props) {
     }
   return (
 
-    <Col xs={2} md={2} lg={3} className="px-1">
+    <Col xs={6} md={4} lg={3} className="px-1">
     <Card className="petCard">
       
-        
+      <Card.Header className="username mb-1">{pet.username}</Card.Header>
           
       <Card.Img variant="top" 
-              className="w-100"
+              className="image w-100"
               src={pet.image}
             />    
-      <Card.Body>
-        <p className="username mb-1">{pet.username}</p>
+      <Card.Body className="petBody">
+        {/* <p className="username mb-1">{pet.username}</p> */}
         {renderSexSymbol()}
         <p className="mb-1">{pet.petType}</p>
-        <p className="rel-status"><i className="fas fa-heart"></i>: {pet.relationshipStatus}</p>
+        <p className="rel-status"><i className="heart fas fa-heart"></i>: {pet.relationshipStatus}</p>
       </Card.Body>
     </Card>
     </Col>
