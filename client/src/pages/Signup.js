@@ -8,6 +8,7 @@ import { ADD_PET } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 function Signup() {
+  const [validated, setValidated] = useState(false);
   const [formState, setFormState] = useState({ email: '', username: '', password: '', sex: '', age: '', petType: '', bio: ''})
   const [addPet, {error}] = useMutation(ADD_PET);
   
@@ -22,7 +23,12 @@ function Signup() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    const form = event.currentTarget;
     try {
+      if (form.checkValidity() === false) {
+        event.stopPropagation();
+      }
+      setValidated(true)
       const { data } = await addPet({
         variables: {...formState } 
       });
@@ -34,22 +40,22 @@ function Signup() {
   };
   return (
     <Container className="pb-5">
-    <Form onSubmit={handleFormSubmit}>
+    <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
       <Form.Group controlId="formEmail">
         <Form.Label>Enter your email address</Form.Label>
-        <Form.Control name="email" type="email" placeholder="name@example.com" onChange={handleChange}/>
+        <Form.Control required name="email" type="email" placeholder="name@example.com" onChange={handleChange}/>
       </Form.Group>
       <Form.Group controlId="formUsername">
         <Form.Label>Enter a unique username</Form.Label>
-        <Form.Control name="username" type="text" placeholder="Username" onChange={handleChange}/>
+        <Form.Control required name="username" type="text" placeholder="Username" onChange={handleChange}/>
       </Form.Group>
       <Form.Group controlId="formPassword">
         <Form.Label>Enter a password that is at least 8 characters</Form.Label>
-        <Form.Control name="password" type="password" placeholder="Password" onChange={handleChange}/>
+        <Form.Control required name="password" type="password" placeholder="Password" onChange={handleChange}/>
       </Form.Group>
       <Form.Group controlId="formMaleOrFemale">
         <Form.Label>Are you a male or female pet?</Form.Label>
-        <Form.Control as="select" name="sex" onChange={(handleChange)}>
+        <Form.Control required as="select" name="sex" onChange={(handleChange)}>
           <option defaultValue="">
           </option>
           <option>male</option>
@@ -57,12 +63,12 @@ function Signup() {
         </Form.Control>
         <Form.Group controlId="formAge">
         <Form.Label>How old are you in human years?</Form.Label>
-        <Form.Control type="text" placeholder="Age" onChange={handleChange}/>
+        <Form.Control required type="text" placeholder="Age" onChange={handleChange}/>
       </Form.Group>
       </Form.Group>
       <Form.Group controlId="formPetType">
         <Form.Label>What type of pet are you?</Form.Label>
-        <Form.Control name="petType" as="select" onChange={handleChange}>
+        <Form.Control required name="petType" as="select" onChange={handleChange}>
           <option defaultValue="" value="">
           </option>
           <option>Dog</option>
@@ -79,7 +85,7 @@ function Signup() {
       </Form.Group>
       <Form.Group  controlId="formBiography">
         <Form.Label>Tell everyone a little bit about yourself</Form.Label>
-        <Form.Control name="bio" as="textarea" rows={3} onChange={handleChange}/>
+        <Form.Control required name="bio" as="textarea" rows={3} onChange={handleChange}/>
       </Form.Group>
       <Button variant="primary" type="submit">
         Submit
