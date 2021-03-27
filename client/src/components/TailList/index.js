@@ -21,9 +21,6 @@ function TailsList (props) {
               roundedCircle
             />
           </div>
-          <div>
-            
-          </div>
         </Col>
         <Col >
         <Card.Body>
