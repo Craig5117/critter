@@ -28,7 +28,7 @@ const petSchema = new Schema(
         },
         image: {
             type: String,
-            default: 'https://res.cloudinary.com/critter-cloud/image/upload/v1616599800/critter/pjcea1yvidbctrgnnbru.jpg'
+            default: 'https://res.cloudinary.com/critter-cloud/image/upload/v1616800683/critter/alh9vhtzct7uwnfyn9fi.jpg'
         },
         age: {
             type: Number
