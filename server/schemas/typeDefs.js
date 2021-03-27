@@ -21,7 +21,7 @@ type Tail {
     _id: ID
     tailText: String
     createdAt: String
-    username: String
+    postedBy: Pet
     comments: [Comment]
     commentCount: Int
 }

@@ -36,7 +36,7 @@ const resolvers = {
       // Tails (all tails, or by username)
       tails: async (parent, { username }) => {
         const params = username ? { username } : {};
-        return Tail.find(params).sort({ createdAt: -1 });
+        return Tail.find(params).sort({ createdAt: -1 }).populate('postedBy');
       },
 
       // Tail (single tail)
@@ -77,7 +77,7 @@ const resolvers = {
         // Create a Tail
         addTail: async (parent, args, context) => {
             if (context.user) {
-              const tail = await Tail.create({ ...args, username: context.user.username });
+              const tail = await Tail.create({ ...args, postedBy: context.user._id });
           
               await Pet.findByIdAndUpdate(
                 { _id: context.user._id },

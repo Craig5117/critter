@@ -17,7 +17,7 @@ function TailsList (props) {
           <div>
             <Image
               className="w-100"
-              src="https://res.cloudinary.com/critter-cloud/image/upload/v1616599800/critter/pjcea1yvidbctrgnnbru.jpg"
+              src={tail.postedBy.image}
               roundedCircle
             />
           </div>
@@ -30,7 +30,7 @@ function TailsList (props) {
       </Card.Body>
         </Col>
       </div>
-      <Card.Footer><p>{tail.username}</p></Card.Footer>
+      <Card.Footer className="d-flex justify-content-between"><span>{tail.postedBy.username}</span><span>{tail.createdAt}</span></Card.Footer>
     </Card>
     
    </div>

@@ -32,7 +32,11 @@ export const QUERY_TAILS = gql`
       _id
       tailText
       createdAt
-      username
+      postedBy {
+        _id
+        username
+        image
+      }
       commentCount
       comments {
         _id
@@ -50,7 +54,11 @@ export const QUERY_TAIL = gql`
       _id
       tailText
       createdAt
-      username
+      postedBy {
+        _id
+        username
+        image
+      }
       commentCount
       comments {
         _id

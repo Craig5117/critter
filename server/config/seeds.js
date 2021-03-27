@@ -229,6 +229,46 @@ db.once('open', async () => {
 
     console.log('pets seeded');
 
+    await Tail.deleteMany();
+    const pet1 = await Pet.findOne({"username": 'Olga'});
+    const pet2 = await Pet.findOne({"username": 'Goldie'});
+
+    if (pet1) {
+        const tail1 = await Tail.create({ tailText: "Cluck cluck!", postedBy: pet1._id });
+
+        await Pet.findByIdAndUpdate(
+          { _id: pet1._id },
+          { $push: { tails: tail1._id } },
+          { new: true }
+        );
+
+        const tail2 = await Tail.create({ tailText: "I love corn!", postedBy: pet1._id });
+
+        await Pet.findByIdAndUpdate(
+          { _id: pet1._id },
+          { $push: { tails: tail2._id } },
+          { new: true }
+        );
+    }
+
+    if (pet2) {
+        const tail3 = await Tail.create({ tailText: "Blub blub!", postedBy: pet2._id });
+
+        await Pet.findByIdAndUpdate(
+            { _id: pet2._id },
+            { $push: { tails: tail3._id } },
+            { new: true }
+        );
+
+        const tail4 = await Tail.create({ tailText: "I wish I was a shark.", postedBy: pet2._id });
+
+        await Pet.findByIdAndUpdate(
+            { _id: pet2._id },
+            { $push: { tails: tail4._id } },
+            { new: true }
+        );
+    }
+    // const tail1 = await Tail.create({...args, postedBy: pet1._id})
 
     process.exit();
 

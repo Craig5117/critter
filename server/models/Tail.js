@@ -4,6 +4,7 @@ const commentSchema = require('./Comment');
 const dateFormat = require('../utils/dateFormat');
 
 
+
 // postSchema
 const tailSchema = new Schema(
     {
@@ -18,8 +19,8 @@ const tailSchema = new Schema(
             default: Date.now,
             get: createdAtVal => dateFormat(createdAtVal)
         },
-        username: {
-            type: String,
+        postedBy: {
+            type: Schema.Types.ObjectId, ref: "Pet",
             required: true
         },
         comments: [commentSchema]
