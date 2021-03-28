@@ -32,7 +32,7 @@ db.once('open', async () => {
             age: '5',
             sex: 'male',
             bio: 'I love bones!',
-            relationshipStatus: 'taken'
+            relationshipStatus: 'Love my human!'
         
         },
         {
@@ -42,7 +42,7 @@ db.once('open', async () => {
             petType: 'Dog',
             sex: 'female',
             bio: 'I look like a dog, but act like a cat',
-            relationshipStatus: 'taken'
+            relationshipStatus: 'Seeking new friends.'
         
         },
         {
@@ -53,7 +53,7 @@ db.once('open', async () => {
             age: '2',
             sex: 'male',
             bio: 'I look scarey, but I love people!',
-            relationshipStatus: 'adoptable'
+            relationshipStatus: 'I need a home.'
         
         },
         // Cat
@@ -64,7 +64,7 @@ db.once('open', async () => {
             petType: 'Cat',
             sex: 'female',
             bio: "I'm not like other cats, I'm a cool cat",
-            relationshipStatus: 'adoptable'
+            relationshipStatus: 'I need a home.'
         
         },
         {
@@ -75,7 +75,7 @@ db.once('open', async () => {
             age: '6',
             sex: 'male',
             bio: 'I love to party!..... by myself!',
-            relationshipStatus: 'taken'
+            relationshipStatus: 'Love my human!'
         
         },
         {
@@ -86,7 +86,7 @@ db.once('open', async () => {
             age: '1',
             sex: 'male',
             bio: "If you offer me pheasant I'd rather have grouse, If you put me in a house I would much prefer a flat, If you put me in a flat then I'd rather have a house, If you set me on a mouse then I only want a rat, If you set me on a rat then I'd rather chase a mouse",
-            relationshipStatus: 'adoptable'
+            relationshipStatus: 'I need a home.'
         
         },
 
@@ -98,7 +98,7 @@ db.once('open', async () => {
             petType: 'Fish',
             sex: 'female',
             bio: 'just keep swimming, just keep swimming...',
-            relationshipStatus: 'taken'
+            relationshipStatus: 'Not interested.'
         
         },
         // Lizard
@@ -110,7 +110,7 @@ db.once('open', async () => {
             age: '2',
             sex: 'male',
             bio: 'lookings for the Avator, or bugs, whichever comes first',
-            relationshipStatus: 'taken'
+            relationshipStatus: 'Love my human!'
         
         },
         {
@@ -120,7 +120,7 @@ db.once('open', async () => {
             petType: 'Lizard',
             sex: 'male',
             bio: 'There is nothing wrong with a life of peace and prosperity',
-            relationshipStatus: 'adoptable'
+            relationshipStatus: 'I need a home.'
         
         },
         // Snake
@@ -132,7 +132,7 @@ db.once('open', async () => {
             age: '20',
             sex: 'male',
             bio: "Trust in me, I wouldn't lie to you!",
-            relationshipStatus: 'taken'
+            relationshipStatus: 'Seeking new friends.'
         
         },
         // Cow
@@ -144,7 +144,7 @@ db.once('open', async () => {
             age: '10',
             sex: 'female',
             bio: "Eat, pray, and eat some more!",
-            relationshipStatus: 'taken'
+            relationshipStatus: 'Not interested.'
         
         },
         {
@@ -155,7 +155,7 @@ db.once('open', async () => {
             age: '3',
             sex: 'female',
             bio: "Just a barbie girl, trapped in a cow's body",
-            relationshipStatus: 'adoptable'
+            relationshipStatus: 'I need a home.'
         
         },
         // Pig
@@ -167,7 +167,7 @@ db.once('open', async () => {
             age: '2',
             sex: 'female',
             bio: "oh d.... ddddd.... dear dear!",
-            relationshipStatus: 'adoptable'
+            relationshipStatus: 'I need a home.'
         
         },
         // Sheep
@@ -179,7 +179,7 @@ db.once('open', async () => {
             age: '3',
             sex: 'male',
             bio: "wake up, sheeple!",
-            relationshipStatus: 'adoptable'
+            relationshipStatus: 'I need a home.'
         
         },
         {
@@ -190,7 +190,7 @@ db.once('open', async () => {
             age: '3',
             sex: 'male',
             bio: "1 sheep, 2 sheep, 3 sheep, 4 sheep, 5 sheep...",
-            relationshipStatus: 'taken'
+            relationshipStatus: 'Love my human!'
         
         },
         // Horse
@@ -202,7 +202,7 @@ db.once('open', async () => {
             age: '7',
             sex: 'female',
             bio: "come ride with me!",
-            relationshipStatus: 'adoptable'
+            relationshipStatus: 'I need a home.'
         
         },
         // Chicken
@@ -214,7 +214,7 @@ db.once('open', async () => {
             age: '2',
             sex: 'male',
             bio: "cluck cluck",
-            relationshipStatus: 'adoptable'
+            relationshipStatus: 'I need a home.'
         },
         {
             username: 'Olga',
@@ -223,7 +223,7 @@ db.once('open', async () => {
             petType: 'Chicken',
             sex: 'female',
             bio: "I like eggs",
-            relationshipStatus: 'taken'
+            relationshipStatus: 'Seeking new friends.'
         },
     ]);
 

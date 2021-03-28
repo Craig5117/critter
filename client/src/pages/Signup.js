@@ -10,7 +10,7 @@ import Auth from '../utils/auth';
 
 function Signup() {
   const [validated, setValidated] = useState(false);
-  const [formState, setFormState] = useState({ email: '', username: '', password: '', sex: '', age: '', petType: '', bio: ''})
+  const [formState, setFormState] = useState({ email: '', username: '', password: '', sex: '', age: '', petType: '', relationshipStatus: '', bio: ''})
   const [addPet, {error}] = useMutation(ADD_PET);
   const { data: types } = useQuery(QUERY_PET_TYPES);
   const [petTypes, setPetTypes] = useState([]);
@@ -84,6 +84,17 @@ function Signup() {
           {petTypes.map((type) => (
             <option key={type._id}>{type.name}</option>
           ))}
+        </Form.Control>
+      </Form.Group>
+      <Form.Group controlId="formRelationshipStatus">
+        <Form.Label>What is your relationship status?</Form.Label>
+        <Form.Control required name="relationshipStatus" as="select" onChange={handleChange}>
+          <option defaultValue="" value="">
+          </option>
+            <option>Love my human!</option>
+            <option>I need a home.</option>
+            <option>Seeking new friends.</option>
+            <option>Not interested.</option>
         </Form.Control>
       </Form.Group>
       <Form.Group  controlId="formBiography">
