@@ -26,16 +26,16 @@ const resolvers = {
     },
 
       // Pet (single pet)
-      pet: async (parent, { username }) => {
-        return Pet.findOne({ username })
+      pet: async (parent, { _id }) => {
+        return Pet.findOne({ _id: _id })
         .select('-__v -password')
         .populate('friends')
         .populate('tails');
     },
 
       // Tails (all tails, or by username)
-      tails: async (parent, { username }) => {
-        const params = username ? { username } : {};
+      tails: async (parent, { postedBy }) => {
+        const params = postedBy ? { postedBy } : {};
         return Tail.find(params).sort({ createdAt: -1 }).populate('postedBy');
       },
 

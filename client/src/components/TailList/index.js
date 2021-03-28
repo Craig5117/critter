@@ -7,7 +7,7 @@ import Col from 'react-bootstrap/Col';
 // import Container from 'react-bootstrap/Container';
 
 import './tailList.css';
-
+// ({ image: string, tailText: string, createdAt: string, username: string })
 function TailsList (props) {
    const { tail } = props;
    return(

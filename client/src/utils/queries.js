@@ -1,5 +1,7 @@
 import gql from 'graphql-tag';
 
+
+
 export const QUERY_ME = gql`
   {
     me {
@@ -27,8 +29,8 @@ export const QUERY_ME = gql`
 `;
 
 export const QUERY_TAILS = gql`
-  query {
-      tails {
+  query tails($postedBy: ID) {
+      tails(postedBy: $postedBy) {
       _id
       tailText
       createdAt
@@ -112,8 +114,8 @@ export const QUERY_PETS_BASIC = gql`
 `;
 
 export const QUERY_PET = gql`
-  query pet($username: String!) {
-    pet(username: $username) {
+  query pet($_id: ID!) {
+    pet(_id: $_id) {
       _id
       username
       email

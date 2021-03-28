@@ -11,6 +11,11 @@
 }
 
 .male-profile {
-    color: #9A43B1;
+    color: #60FB65;
     font-size: 8em;
+}
+
+.heart-profile {
+    color: #9A43B1;
+    font-size: 4em;
 }

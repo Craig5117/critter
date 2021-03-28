@@ -53,8 +53,7 @@ function Signup() {
   return (
     <Container className="pb-5">
       <h3>Sign Up</h3>
-    <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-    <form className="form">
+    <Form className="form" noValidate validated={validated} onSubmit={handleFormSubmit}>
       <Form.Group controlId="formEmail">
         <Form.Label>Enter your email address</Form.Label>
         <Form.Control required name="email" type="email" placeholder="name@example.com" onChange={handleChange}/>
@@ -105,11 +104,10 @@ function Signup() {
         <Form.Label>Tell everyone a little bit about yourself</Form.Label>
         <Form.Control required name="bio" as="textarea" rows={3} onChange={handleChange}/>
       </Form.Group>
-      <Button className="button" variant="primary" type="submit">
+      <Button className="button center-margin"  type="submit">
         Submit
       </Button>
       {error && <div>Sign up failed</div>}
-      </form>
     </Form>
     </Container>
   );

@@ -27,6 +27,12 @@ h3 {
     margin: 20px;
 }
 
+.tails-container, .petCard-container {
+    margin-top: 3em;
+   max-height: 500px;
+   overflow: auto;
+}
+
 @media screen and (min-width: 1025px) {
     .container-generic {
         padding: 4em 6em;

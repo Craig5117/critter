@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom'
 // import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 // import Row from 'react-bootstrap/Row';
@@ -21,6 +22,7 @@ function PetCard(props) {
   return (
 
     <Col xs={6} md={4} lg={3} className="px-1">
+      <Link className="p-0" to={`/profile/${pet._id}`}>
     <Card className="petCard">
       
       <Card.Header className="username mb-1">{pet.username}</Card.Header>
@@ -36,6 +38,7 @@ function PetCard(props) {
         <p className="rel-status"><i className="heart-card fas fa-heart"></i><br /><span>{pet.relationshipStatus}</span></p>
       </Card.Body>
     </Card>
+    </Link>
     </Col>
   );
 }

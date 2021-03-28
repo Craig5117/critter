@@ -46,7 +46,7 @@ function Home() {
         Tails and Furrends
       </div>
       <Row className="container-generic">
-      <Col xs={11} md={6}>
+      <Col className="tails-container" xs={11} md={6}>
           {!dbTails.tails ? (
               <div>Loading...</div>
           ) : 
@@ -67,7 +67,8 @@ function Home() {
             filterPets().map((pet) => (
                 <PetCard 
                 pet={pet}
-                key={pet._id}/>
+                key={pet._id}
+               />
             )) 
           }
       </Col>

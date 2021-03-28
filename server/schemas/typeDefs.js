@@ -43,8 +43,8 @@ type petType {
 type Query {
     me: Pet
     pets: [Pet]
-    pet(username: String!): Pet
-    tails(username: String): [Tail]
+    pet(_id: ID!): Pet
+    tails(postedBy: ID): [Tail]
     tail(_id: ID!): Tail
     petTypes: [petType]
     }

@@ -53,7 +53,11 @@ export const ADD_TAIL = gql`
       _id
       tailText
       createdAt
-      username
+      postedBy {
+        _id
+        username
+        image
+      }
       commentCount
       comments {
         _id

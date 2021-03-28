@@ -55,7 +55,7 @@ function Login () {
           <Form.Label>Enter a password that is at least 8 characters</Form.Label>
           <Form.Control required name="password" type="password" placeholder="Password" onChange={handleChange}/>
         </Form.Group>
-        <Button className="button" variant="primary" type="submit">
+        <Button className="button center-margin"  type="submit">
           Submit
         </Button>
         {error && <div>Login failed</div>}
