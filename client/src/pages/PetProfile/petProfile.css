@@ -1,3 +1,16 @@
 .profile-image {
-    height: 100px;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    margin-right: 0;
+}
+
+.female-profile {
+    color: #9A43B1;
+    font-size: 8em;
+}
+
+.male-profile {
+    color: #9A43B1;
+    font-size: 8em;
 }

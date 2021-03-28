@@ -11,11 +11,11 @@ function PetCard(props) {
     function renderSexSymbol() {
         if(pet.sex === 'female') {
             return (
-                <i className="fas fa-venus"></i>
+                <i className="fas fa-venus female-card"></i>
             )
         }
         return (
-            <i className="fas fa-mars"></i>
+            <i className="fas fa-mars male-card"></i>
         )
     }
   return (
@@ -33,7 +33,7 @@ function PetCard(props) {
         {/* <p className="username mb-1">{pet.username}</p> */}
         {renderSexSymbol()}
         <p className="mb-1">{pet.petType}</p>
-        <p className="rel-status"><i className="heart fas fa-heart"></i>: {pet.relationshipStatus}</p>
+        <p className="rel-status"><i className="heart-card fas fa-heart"></i><br /><span>{pet.relationshipStatus}</span></p>
       </Card.Body>
     </Card>
     </Col>

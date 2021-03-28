@@ -13,26 +13,33 @@
     font-size: 100%;
 }
 
-.petCard:hover {
-    word-wrap: break-word;
+.petCard:hover > .username {
+    overflow:visible;
 }
 
-.username, .rel-status {
+.username  {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
-.username:hover {
+/* .username:hover {
     overflow:visible;
-}
+} */
 
 .petCard-container {
     padding-right: 2em;
 }
 
-.heart {
-    color: red;
+
+.female-card {
+    color: #7e0c9e;
+    font-size: 2em
+}
+
+.male-card {
+    color: #7e0c9e;
+    font-size: 2em
 }
 
 .image {
@@ -44,3 +51,14 @@
     font-size: 100%;
     font-weight: bolder;
 }
+
+/* Relationship status */
+
+.heart-card {
+    color: #7e0c9e;
+    font-size: 2em;
+}
+
+/* .rel-status {
+    
+} */

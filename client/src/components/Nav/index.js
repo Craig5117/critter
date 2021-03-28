@@ -79,7 +79,6 @@ function Navigation() {
         <Nav className="mr-auto" onClick={handleNavDisplay}>
         
           <Nav.Link as={Link} to="/">Home</Nav.Link>
-          <Nav.Link as={Link} to="/profile">My Profile</Nav.Link>
           {!Auth.loggedIn() && 
           <>
           <Nav.Link as={Link} to="/signup">Signup</Nav.Link>
@@ -87,7 +86,10 @@ function Navigation() {
           </>
           }
           {Auth.loggedIn() && 
+          <>
+          <Nav.Link as={Link} to="/profile">My Profile</Nav.Link>
           <Nav.Link href="/" onClick={() => Auth.logout()}>Logout</Nav.Link>
+          </>
           }
          
         </Nav>
