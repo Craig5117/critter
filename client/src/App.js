@@ -29,8 +29,7 @@ function App() {
       <Router>
         <div>
           <Header />
-          <h2>Critter is here!</h2>
-          <div>
+          
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/login" component={Login} />
@@ -39,7 +38,7 @@ function App() {
               <Route exact path="/view-tail" component={SingleTail} /> 
               <Route component={NoMatch} />
             </Switch>
-          </div>
+          
         </div>
       </Router>
     </ApolloProvider>

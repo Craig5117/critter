@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 // import { Link } from 'react-router-dom';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Navbar from 'react-bootstrap/Navbar';
@@ -9,6 +9,9 @@ import Button from 'react-bootstrap/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_PET_TYPES } from '../../utils/queries';
+import { Link } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
+import Auth from '../../utils/auth';
 // import './nav.css'
 // import Col from 'react-bootstrap/Col';
 // see the React Bootstrap docs on the Navbar component,
@@ -17,6 +20,7 @@ import { QUERY_PET_TYPES } from '../../utils/queries';
 // <Nav.Link as={Link}></Nav.Link>
 
 function Navigation() {
+  let location = useLocation().pathname;
   const dispatch = useDispatch();
   function handleClick(name) {
     dispatch({
@@ -32,11 +36,10 @@ function Navigation() {
       });
   }
   const { data: types } = useQuery(QUERY_PET_TYPES);
-//   const [petTypes, setPetTypes] = useState([]);
 
+// this effect runs the redux dispatch to update the petTypes
   useEffect(() => {
     if (types) {
-    //   setPetTypes(types.petTypes);
       dispatch({
           type: 'pets/UPDATE_PET_TYPES',
           payload: types.petTypes
@@ -46,21 +49,50 @@ function Navigation() {
 
   const petTypes = useSelector(state => state.pets.petTypes)
   // this would be a good case for redux to handle
-  const [showPetFilter, setShowPetFilter] = useState(false);
+  const showPetFilter = useSelector(state => state.nav.showPetFilter)
+  
   useEffect(() => {
-    if (window.location.pathname === '/') {
-      setShowPetFilter(true);
+    console.log(location)
+    if (location === '/') {
+      dispatch({
+        type: 'nav/SHOW_PET_FILTER',
+        payload: true
+      });
     }
-  }, [setShowPetFilter]);
+    else if (showPetFilter && location !== '/') {
+        dispatch({
+          type: 'nav/SHOW_PET_FILTER',
+          payload: false
+        });
+    }
+  }, [location, dispatch, showPetFilter]);
+
+  function handleNavDisplay () {
+   
+  }
+ 
   return (
     <div className="nav">
-      <Navbar className="w-100">
-        <Nav className="mr-auto">
-          <Nav.Link href="/">Home</Nav.Link>
-          <Nav.Link href="/profile">My Profile</Nav.Link>
-          <Nav.Link href="/signup">Signup</Nav.Link>
-          <Nav.Link href="/login">Login</Nav.Link>
+      <Navbar className="w-100" expand="md">
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="mr-auto" onClick={handleNavDisplay}>
+        
+          <Nav.Link as={Link} to="/">Home</Nav.Link>
+          <Nav.Link as={Link} to="/profile">My Profile</Nav.Link>
+          {!Auth.loggedIn() && 
+          <>
+          <Nav.Link as={Link} to="/signup">Signup</Nav.Link>
+          <Nav.Link as={Link} to="/login">Login</Nav.Link>
+          </>
+          }
+          {Auth.loggedIn() && 
+          <Nav.Link href="/" onClick={() => Auth.logout()}>Logout</Nav.Link>
+          }
+         
         </Nav>
+        </Navbar.Collapse>
+        
         <Form inline>
           <FormControl type="text" placeholder="Search" className="mr-sm-2" />
           <Button variant="outline-primary">Search by Pet's Username</Button>

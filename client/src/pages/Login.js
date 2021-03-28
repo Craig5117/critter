@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-import { validateEmail } from '../utils/helpers';
+// import { validateEmail } from '../utils/helpers';
 import { useMutation } from '@apollo/react-hooks';
 import { LOGIN_PET } from '../utils/mutations';
 import Auth from '../utils/auth';

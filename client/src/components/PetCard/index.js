@@ -1,10 +1,8 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 // import Button from 'react-bootstrap/Button';
-import Image from 'react-bootstrap/Image';
 import Col from 'react-bootstrap/Col';
 // import Row from 'react-bootstrap/Row';
-import Container from 'react-bootstrap/Container'
 import './petCard.css'
 
 

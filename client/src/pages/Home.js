@@ -36,51 +36,22 @@ function Home() {
     }
     
     
-//   const dbPets = [
-//     {
-//         username:  "FluffyEars99",
-//         petType: "Dog",
-//         age: 3,
-//         sex: "male",
-//         relationshipStatus: "In a committed relationship with my human.",
-//         image: "https://res.cloudinary.com/critter-cloud/image/upload/v1616599800/critter/pjcea1yvidbctrgnnbru.jpg",
-//         bio: "Friendly Cocker Spaniel who enjoys long walks in the park with my human, Emily.", 
-    
-//     },
-// ];
-//   const dbTails = [
-//     {
-//       tailText: 'Slept on the couch all day. My human keeps running the vacuum. Humans are so weird.',
-//       image: "https://res.cloudinary.com/critter-cloud/image/upload/v1616599800/critter/pjcea1yvidbctrgnnbru.jpg",
-//       createdAt: 'Mar 13th, 2021 at 3:20 am',
-//       username: 'FluffyEars99',
-//       commentCount: 34
-//     },
-//     {
-//       tailText: 'Chased the mailman again today. He fell over the garbage can, lol.',
-//       image: "https://res.cloudinary.com/critter-cloud/image/upload/v1616599800/critter/pjcea1yvidbctrgnnbru.jpg",
-//       createdAt: 'Mar 12th, 2021 at 8:00 am',
-//       username: 'BigDog64',
-//       commentCount: 56
-//     },
-//     {
-//       tailText: 'Swam around my tank and stared out at the world around me.',
-//       image: "https://res.cloudinary.com/critter-cloud/image/upload/v1616599800/critter/pjcea1yvidbctrgnnbru.jpg",
-//       createdAt: 'Mar 13th, 2021 at 9:20 pm',
-//       username: 'Jaws345',
-//       commentCount: 34
-//     },
-//   ];
-
-// if (!tails.length) {
-//     return <h2>LOADING...</h2>;
-//   } 
-
   return (
     <div>
-      <div>
-        This is the Home Page. Maybe we should put the latest Posts here?
-      </div>
+        <Row className="d-flex justify-content-between px-5">
+            {/* <div>
+                {dbTails && 
+                
+                }
+             
+            </div> */}
+            {/* <div>
+                {dbPets &&
+                
+                }
+                
+            </div> */}
+        </Row> 
       <Row>
       <Col xs={11} md={6}>
           {!dbTails.tails ? (
@@ -96,6 +67,7 @@ function Home() {
       </Col>
       
       <Col xs={11} md={6} className="d-flex flex-wrap petCard-container">
+     
           {!dbPets.pets ? (
               <div>Loading...</div>
           ) :
