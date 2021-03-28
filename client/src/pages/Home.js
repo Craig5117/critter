@@ -9,6 +9,8 @@ import { QUERY_PETS_BASIC, QUERY_TAILS } from '../utils/queries';
 import { useSelector } from 'react-redux';
 import Container from 'react-bootstrap/esm/Container';
 
+import './pages.css';
+
 function Home() {
     const { data: pets } = useQuery(QUERY_PETS_BASIC)
     const [dbPets, setDbPets] = useState([])
@@ -80,10 +82,10 @@ function Home() {
   return (
     
     <div>
-      <div>
-        This is the Home Page. Maybe we should put the latest Posts here?
+      <div className="subtitle">
+        Posts and Furrends
       </div>
-      <Row>
+      <Row className="container-generic">
       <Col xs={11} md={6}>
           {!dbTails.tails ? (
               <div>Loading...</div>

@@ -6,13 +6,15 @@ import Col from 'react-bootstrap/Col';
 // import Row from 'react-bootstrap/Row';
 // import Container from 'react-bootstrap/Container';
 
+import './tailList.css';
+
 function TailsList (props) {
    const { tail } = props;
    return(
     <div>   
   
     <Card >
-      <div className="d-flex flex-wrap px-4">
+      <div className="d-flex flex-wrap px-4 card-background">
         <Col xs={7} md={4} lg={2}>
           <div>
             <Image
