@@ -1,5 +1,28 @@
+.tailCard {
+    margin-top: 1em;
+}
+
 .card-background {
     background-color: #BADEFC;
     padding: 10px;
+    
+}
+
+.postedBy {
+    text-align: center;
+
+    /* white-space: nowrap; */
+}
+
+.tailText {
+    text-align: end;
+    font-weight: bolder;
+    font-size: 1em;
+    overflow: auto;
+}
+
+.tailsCol {
+    margin-right: 0%;
+    margin-left: 0%;
 }
 

@@ -13,26 +13,27 @@ function TailsList (props) {
    return(
     <div>   
   
-    <Card >
+    <Card className="tailCard">
       <div className="d-flex flex-wrap px-4 card-background">
-        <Col xs={7} md={4} lg={2}>
-          <div>
+        <Col xs={8} md={5} lg={2} className="tailsCol">
+          <div className="postedBy justify-content-between">
             <Image
               className="w-100"
               src={tail.postedBy.image}
               roundedCircle
             />
+            <span>{tail.postedBy.username}</span>
           </div>
         </Col>
         <Col >
         <Card.Body>
-        <Card.Text>
+        <Card.Text className="tailText">
         {tail.tailText}
         </Card.Text>
       </Card.Body>
         </Col>
       </div>
-      <Card.Footer className="d-flex justify-content-between"><span>{tail.postedBy.username}</span><span>{tail.createdAt}</span></Card.Footer>
+      <Card.Footer className="d-flex"><span>{tail.createdAt}</span></Card.Footer>
     </Card>
     
    </div>
