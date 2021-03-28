@@ -42,7 +42,7 @@ function Home() {
   return (
     
     <div>
-      <div className="subtitle">
+      <div className="subtitle text-center">
         Tails and Furrends
       </div>
       <Row className="container-generic">
