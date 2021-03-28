@@ -7,6 +7,9 @@ import Row from 'react-bootstrap/Row';
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_PETS_BASIC, QUERY_TAILS } from '../utils/queries';
 import { useSelector } from 'react-redux';
+// import Container from 'react-bootstrap/esm/Container';
+
+import './pages.css';
 
 function Home() {
     const { data: pets } = useQuery(QUERY_PETS_BASIC)
@@ -37,22 +40,12 @@ function Home() {
     
     
   return (
+    
     <div>
-        <Row className="d-flex justify-content-between px-5">
-            {/* <div>
-                {dbTails && 
-                
-                }
-             
-            </div> */}
-            {/* <div>
-                {dbPets &&
-                
-                }
-                
-            </div> */}
-        </Row> 
-      <Row>
+      <div className="subtitle">
+        Tails and Furrends
+      </div>
+      <Row className="container-generic">
       <Col xs={11} md={6}>
           {!dbTails.tails ? (
               <div>Loading...</div>
@@ -80,6 +73,7 @@ function Home() {
       </Col>
       </Row>
     </div>
+    
   );
 }
 

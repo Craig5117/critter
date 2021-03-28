@@ -1,6 +1,24 @@
-* {
-  margin: 0;
-  padding: 0;
+a {
+  margin: 0px;
+  padding: 200px;
   box-sizing: border-box;
+  
 }
 
+h2 {
+  padding: 20px;
+}
+
+.generic {
+  color: #2688E3;
+  text-align: center;
+}
+
+.button {
+  background-color: #9A43B1;
+  border: none;
+}
+
+.button:hover {
+  background-color: #7e0c9e;
+}

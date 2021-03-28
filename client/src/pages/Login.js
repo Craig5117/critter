@@ -7,7 +7,7 @@ import { useMutation } from '@apollo/react-hooks';
 import { LOGIN_PET } from '../utils/mutations';
 import Auth from '../utils/auth';
 
-
+import './pages.css';
 
 
 
@@ -44,7 +44,7 @@ function Login () {
   };
    return(
       <Container className="pb-5">
-      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+      <Form className="form" noValidate validated={validated} onSubmit={handleFormSubmit}>
         <Form.Group controlId="formEmail">
           <Form.Label>Enter your email address</Form.Label>
           <Form.Control required name="email" type="email" placeholder="name@example.com" onChange={handleChange}/>
@@ -53,7 +53,7 @@ function Login () {
           <Form.Label>Enter a password that is at least 8 characters</Form.Label>
           <Form.Control required name="password" type="password" placeholder="Password" onChange={handleChange}/>
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button className="button" variant="primary" type="submit">
           Submit
         </Button>
         {error && <div>Login failed</div>}
