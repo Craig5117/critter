@@ -1,6 +1,13 @@
+
+
 .form {
-    padding: 0px 200px;
+    padding: 50px 100px;
+    margin: 0px 200px;
     text-align: left;
+    background-color: #BADEFC;
+    font-weight: bold;
+    box-shadow: 0 10px 10px 10px rgba(0, 0, 0, 0.2) ;
+    border-radius: 25px;
 }
 
 .container-generic {
@@ -10,4 +17,10 @@
 .subtitle {
     font-size: 50px;
     font-weight: bold;
+}
+
+h3 {
+    font-weight: bold;
+    text-align: center;
+    margin: 20px;
 }

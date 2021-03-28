@@ -8,6 +8,8 @@ import { ADD_PET } from '../utils/mutations';
 import { QUERY_PET_TYPES } from '../utils/queries'
 import Auth from '../utils/auth';
 
+import './pages.css';
+
 function Signup() {
   const [validated, setValidated] = useState(false);
   const [formState, setFormState] = useState({ email: '', username: '', password: '', sex: '', age: '', petType: '', relationshipStatus: '', bio: ''})
@@ -50,7 +52,9 @@ function Signup() {
   };
   return (
     <Container className="pb-5">
+      <h3>Sign Up</h3>
     <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+    <form className="form">
       <Form.Group controlId="formEmail">
         <Form.Label>Enter your email address</Form.Label>
         <Form.Control required name="email" type="email" placeholder="name@example.com" onChange={handleChange}/>
@@ -101,10 +105,11 @@ function Signup() {
         <Form.Label>Tell everyone a little bit about yourself</Form.Label>
         <Form.Control required name="bio" as="textarea" rows={3} onChange={handleChange}/>
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button className="button" variant="primary" type="submit">
         Submit
       </Button>
       {error && <div>Sign up failed</div>}
+      </form>
     </Form>
     </Container>
   );
