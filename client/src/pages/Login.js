@@ -12,6 +12,7 @@ import Auth from '../utils/auth';
 
 
 function Login () {
+  const [validated, setValidated] = useState(false);
   const [formState, setFormState] = useState({ email: '', password: ''})
   const [login, {error}] = useMutation(LOGIN_PET);
   
@@ -26,26 +27,31 @@ function Login () {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    const form = event.currentTarget;
     try {
+      if (form.checkValidity() === false) {
+        event.stopPropagation();
+      }
+      setValidated(true)
       const { data } = await login({
         variables: {...formState } 
       });
       Auth.login(data.login.token);
-      console.log(formState)
+      // console.log(formState)
     } catch (e) {
       console.error(e)
     }
   };
    return(
       <Container className="pb-5">
-      <Form onSubmit={handleFormSubmit}>
+      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
         <Form.Group controlId="formEmail">
           <Form.Label>Enter your email address</Form.Label>
-          <Form.Control name="email" type="email" placeholder="name@example.com" onChange={handleChange}/>
+          <Form.Control required name="email" type="email" placeholder="name@example.com" onChange={handleChange}/>
         </Form.Group>
         <Form.Group controlId="formPassword">
           <Form.Label>Enter a password that is at least 8 characters</Form.Label>
-          <Form.Control name="password" type="password" placeholder="Password" onChange={handleChange}/>
+          <Form.Control required name="password" type="password" placeholder="Password" onChange={handleChange}/>
         </Form.Group>
         <Button variant="primary" type="submit">
           Submit
