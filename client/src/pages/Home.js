@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/Row';
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_PETS_BASIC, QUERY_TAILS } from '../utils/queries';
 import { useSelector } from 'react-redux';
+import Container from 'react-bootstrap/esm/Container';
 
 function Home() {
     const { data: pets } = useQuery(QUERY_PETS_BASIC)
@@ -77,6 +78,7 @@ function Home() {
 //   } 
 
   return (
+    
     <div>
       <div>
         This is the Home Page. Maybe we should put the latest Posts here?
@@ -108,6 +110,7 @@ function Home() {
       </Col>
       </Row>
     </div>
+    
   );
 }
 

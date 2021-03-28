@@ -11,6 +11,8 @@ import PetProfile from './pages/PetProfile/PetProfile';
 import SingleTail from './pages/SingleTail';
 import NoMatch from "./pages/NoMatch";
 
+import './index.css';
+
 const client = new ApolloClient({
   request: (operation) => {
     const token = localStorage.getItem('id_token');
@@ -27,7 +29,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div>
+        <div className="generic">
           <Header />
           <h2>Critter is here!</h2>
           <div>
