@@ -1,11 +1,3 @@
-.header-link { 
-    text-decoration: none;
-}
-
-.header-link:hover {
-    text-decoration:none;
-}
-
 .logo-header {
     width: 7em;
     display: inline-block;

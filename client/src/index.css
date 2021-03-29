@@ -1,8 +1,11 @@
 a {
   margin: 0px;
-  padding: 200px;
   box-sizing: border-box;
-  
+  text-decoration: none
+}
+
+a:hover {
+  text-decoration:none;
 }
 
 h2 {
