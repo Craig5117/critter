@@ -10,11 +10,12 @@ import { useSelector } from 'react-redux';
 // import Container from 'react-bootstrap/esm/Container';
 
 import './pages.css';
+import { idbPromise } from '../utils/helpers';
 
 function Home() {
     const { data: pets } = useQuery(QUERY_PETS_BASIC)
     const [dbPets, setDbPets] = useState([])
-    const { data: tails } = useQuery(QUERY_TAILS)
+    const { loading: loadingTails, data: tails } = useQuery(QUERY_TAILS)
     const [dbTails, setDbTails] = useState([])
     const currentPetType = useSelector(state => state.pets.currentPetType)
     // tails setter
@@ -22,8 +23,18 @@ function Home() {
         if (tails) {
             console.log('home tails', tails.tails)
             setDbTails(tails.tails)
+            tails.tails.forEach(tail => {
+               idbPromise('tails', 'put', tail); 
+            });
+        } else if (!loadingTails) {
+            // if there is no data and we aren't loading, we are offline
+            // get the data from indexedDB
+            idbPromise('tails', 'get').then((idbTails) => {
+                console.log('idbTails: ', idbTails)
+                setDbTails(idbTails.reverse());
+            })
         }
-    }, [tails, setDbTails])
+    }, [tails, loadingTails, setDbTails])
 
     // pets setter
     useEffect(() => {
