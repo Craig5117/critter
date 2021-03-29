@@ -44,6 +44,12 @@
 
 .image {
     margin-top: 0%;
+    max-height: 140px;
+}
+
+.image-container {
+    height: 150px;
+
 }
 
 .petBody {

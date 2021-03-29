@@ -37,7 +37,7 @@ function App() {
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/profile/:_id?" component={PetProfile} />
-              <Route exact path="/view-tail" component={SingleTail} /> 
+              <Route exact path="/tail/:id" component={SingleTail} /> 
               <Route component={NoMatch} />
             </Switch>
           

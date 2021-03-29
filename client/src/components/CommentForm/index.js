@@ -8,7 +8,7 @@ const CommentForm = ({ tailId }) => {
 
   const [addComment, {error}] = useMutation(ADD_COMMENT);
   const handleChange = (event) => {
-    if (event.target.value.length <= 280) {
+    if (event.target.value.length <= 3000) {
       setBody(event.target.value);
       setCharacterCount(event.target.value.length);
     }
@@ -29,8 +29,8 @@ const CommentForm = ({ tailId }) => {
 
   return (
     <div>
-      <p className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}>
-        Character Count: {characterCount}/280
+      <p className={`m-0 ${characterCount === 3000 || error ? 'text-error' : ''}`}>
+        Character Count: {characterCount}/3000
         {error && <span className="ml-2">Something went wrong...</span>}
       </p>
       <form

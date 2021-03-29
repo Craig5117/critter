@@ -9,9 +9,11 @@ import './petProfile.css'
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_ME, QUERY_PET, QUERY_TAILS } from '../../utils/queries';
 import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import Auth from '../../utils/auth';
 
 function PetProfile() {
+  const dispatch = useDispatch();
   const { _id: idParam } = useParams();
   const [dbTails, setDbTails] = useState([])
   const { data: tails } = useQuery(QUERY_TAILS, {
@@ -41,10 +43,14 @@ function PetProfile() {
   }, [data]);
 
   useEffect(() => {
-    if (pet) {
-      console.log(pet);
+    if (pet && !idParam) {
+      dispatch({
+        type: 'me/SET_IMAGE',
+        payload: pet.image,
+      })
+      console.log('imageURL', pet.image);
     }
-  }, [pet]);
+  }, [pet, idParam, dispatch]);
 
   function renderSexSymbol() {
     if(pet.sex === 'female') {
@@ -56,7 +62,7 @@ function PetProfile() {
         <i className="fas fa-mars male-profile"></i>
     )
 }
-console.log(idParam)
+// console.log(idParam)
   return (
     <div>
       <Row>
