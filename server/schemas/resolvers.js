@@ -41,7 +41,7 @@ const resolvers = {
 
       // Tail (single tail)
       tail: async (parent, { _id }) => {
-        return Tail.findOne({ _id });
+        return Tail.findOne({ _id }).populate('postedBy');
       },
       // petTypes
       petTypes: async () => {

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_COMMENT } from '../../utils/mutations';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 const CommentForm = ({ tailId }) => {
-  const [commentBody, setBody] = useState('');
+  const [commentText, setBody] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
 
   const [addComment, {error}] = useMutation(ADD_COMMENT);
@@ -18,7 +20,7 @@ const CommentForm = ({ tailId }) => {
     event.preventDefault();
     try {
       await addComment({
-        variables: { tailId, commentBody },
+        variables: { tailId, commentText },
       });
       setBody('');
       setCharacterCount(0);
@@ -29,24 +31,28 @@ const CommentForm = ({ tailId }) => {
 
   return (
     <div>
-      <p className={`m-0 ${characterCount === 3000 || error ? 'text-error' : ''}`}>
+     
+      <Form
+        className="flex-row justify-center justify-space-between-md align-stretch ml-4 mt-2"
+        onSubmit={handleFormSubmit}
+      >
+
+         <p className={`m-0 ${characterCount === 3000 || error ? 'text-error' : ''}`}>
         Character Count: {characterCount}/3000
         {error && <span className="ml-2">Something went wrong...</span>}
       </p>
-      <form
-        classname="flex-row justify-center justify-space-between-md align-stretch"
-        onSubmit={handleFormSubmit}
-      >
         <textarea
-          placeholder="Leave a reaction to this thought..."
-          value={commentBody}
+          placeholder="Leave a comment to this tail..."
+          value={commentText}
           className="form-input col-12 col-md-9"
           onChange={handleChange}
         ></textarea>
-        <button className="btn col-12 col-md-3" type="submit">
-          Submit
-        </button>
-      </form>
+        <div className="justify-content-end">
+          <Button className="buton" type="submit">
+            Submit
+          </Button>
+        </div>
+      </Form>
     </div>
   );
 };
