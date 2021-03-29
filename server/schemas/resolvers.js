@@ -128,7 +128,8 @@ const resolvers = {
         
             const updatedUser = await Pet.findByIdAndUpdate(
               { _id: context.user._id },
-              { image: context.user.image = imageURL }
+              { image: imageURL },
+              { new: true }
             );
         
             return updatedUser;

@@ -1,12 +1,24 @@
 import React, { useState } from 'react';
 import Image from 'react-bootstrap/Image';
+import { useMutation } from '@apollo/react-hooks';
 import './profileImage.css';
+import { ADD_PROFILE_IMAGE } from '../../utils/mutations';
+import { useSelector, useDispatch } from 'react-redux';
 const Compress = require('compress.js');
 
 
 
 function ProfileImage () {
-    const [image, setImage] = useState('');
+    const dispatch = useDispatch();
+    const storedImage = useSelector(state => state.me.image)
+    const [addProfileImage] = useMutation(ADD_PROFILE_IMAGE);
+   
+    // useEffect(() => {
+    //     if (image) {
+            
+    //         console.log('added')
+    //     }
+    // }, [image, addProfileImage])
     const [loading, setLoading] = useState(false);
     const compress = new Compress();
     const uploadImage = async (e) => {
@@ -35,21 +47,25 @@ function ProfileImage () {
             }
         )
         const file = await res.json();
-        setImage(file.secure_url)
-        console.log(file.secure_url)
+        await addProfileImage({
+            variables: { imageURL: file.secure_url }
+        });
+        await dispatch({
+            type: 'me/SET_IMAGE',
+            payload: file.secure_url
+        })
         setLoading(false)
     }
     return (
         <div>
             <label htmlFor="image-upload" id="image-upload-label"><Image
             className="w-100"
-              src="https://res.cloudinary.com/critter-cloud/image/upload/v1616599800/critter/pjcea1yvidbctrgnnbru.jpg"
+              src={storedImage}
               roundedCircle
             /></label>
        <input style={{display:"none"}} name="file" id="image-upload" type="file" placeholder="Upload an image" onChange={uploadImage} />
-        {loading ? (
+        {loading &&
             <h4>loading</h4>
-        ): (<Image src={image} style={{width: '300px'}} roundedCircle ></Image>)
         }
         </div>
     )

@@ -48,7 +48,7 @@ export const ADD_PET = gql`
 `;
 
 export const ADD_TAIL = gql`
-    mutation addTail($tailText: String!) {
+  mutation addTail($tailText: String!) {
     addTail(tailText: $tailText) {
       _id
       tailText
@@ -67,7 +67,7 @@ export const ADD_TAIL = gql`
 `;
 
 export const ADD_COMMENT = gql`
-    mutation addComment($tailId: ID!, $commentText: String!) {
+  mutation addComment($tailId: ID!, $commentText: String!) {
     addComment(tailId: $tailId, commentText: $commentText) {
       _id
       commentCount
@@ -81,18 +81,18 @@ export const ADD_COMMENT = gql`
   }
 `;
 
-export const UPDATE_PROFILE_IMAGE = gql`
-    mutation updateProfileImage($userId: ID!) {
-        pet {
-            _id
-            username
-            email
-            petType
-            age
-            sex
-            image
-            bio
-            relationshipStatus
-        }
+export const ADD_PROFILE_IMAGE = gql`
+  mutation addProfileImage($imageURL: String!) {
+    addProfileImage(imageURL: $imageURL) {
+      _id
+      username
+      email
+      petType
+      age
+      sex
+      image
+      bio
+      relationshipStatus
     }
+  }
 `;

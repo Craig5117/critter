@@ -27,10 +27,10 @@ function PetCard(props) {
       
       <Card.Header className="username mb-1">{pet.username}</Card.Header>
           
-      <Card.Img variant="top" 
+      <div className="image-container"><Card.Img variant="top" 
               className="image w-100"
               src={pet.image}
-            />    
+            /> </div>   
       <Card.Body className="petBody">
         {/* <p className="username mb-1">{pet.username}</p> */}
         {renderSexSymbol()}

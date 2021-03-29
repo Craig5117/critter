@@ -46,6 +46,10 @@
     margin-top: 0%;
 }
 
+.image-container {
+    height: 150px;
+}
+
 .petBody {
     color: #2688e3;
     font-size: 100%;
