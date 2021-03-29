@@ -20,7 +20,7 @@ function TailsList(props) {
           <Link to={`/tail/${tail._id}`}>
       <Card className="tailCard">
       <Container className="card-background">
-        <Row>
+     
           <Col sm={4} className="postedBy justify-content-between">
               <Image
                 // className="w-100"
@@ -34,7 +34,7 @@ function TailsList(props) {
           <Col sm={8} className="tailText">
           {tail.tailText}
           </Col>
-        </Row>
+     
       </Container>
       <Card.Footer className="d-flex createdAt"><span>{tail.createdAt}</span></Card.Footer>
 
