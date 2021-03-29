@@ -78,13 +78,13 @@ const resolvers = {
         addTail: async (parent, args, context) => {
             if (context.user) {
               const tail = await Tail.create({ ...args, postedBy: context.user._id });
-          
-              await Pet.findByIdAndUpdate(
+              
+              const pet = await Pet.findByIdAndUpdate(
                 { _id: context.user._id },
                 { $push: { tails: tail._id } },
                 { new: true }
               );
-          
+
               return tail;
             }
           

@@ -11,16 +11,23 @@ const TailForm = () => {
   const [addTail, { error }] = useMutation(ADD_TAIL
     , {
     update(cache, { data: { addTail } }) {
+     
       try {
         const { tails }  = cache.readQuery({ query: QUERY_TAILS });
         console.log(tails);
-        // cache.writeQuery({
-        //   query: QUERY_TAILS,
-        //   data: { tails: [addTail, ...tails] },
-        // });
+        cache.writeQuery({
+          query: QUERY_TAILS,
+          data: { tails: [addTail, ...tails] },
+        });
       } catch (e) {
         console.error(e);
       }
+
+      const { me } = cache.readQuery({ query: QUERY_ME });
+      cache.writeQuery({
+        query: QUERY_ME,
+        data: { me: { ...me, tails: [...me.tails, addTail] } },
+      })
     },
   }
   );

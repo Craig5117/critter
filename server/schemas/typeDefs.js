@@ -17,6 +17,8 @@ type Pet {
     friendCount: Int
 }
 
+
+
 type Tail {
     _id: ID
     tailText: String
