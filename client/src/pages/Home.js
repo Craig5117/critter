@@ -20,7 +20,8 @@ function Home() {
     // tails setter
     useEffect(() => {
         if (tails) {
-            setDbTails(tails)
+            console.log('home tails', tails.tails)
+            setDbTails(tails.tails)
         }
     }, [tails, setDbTails])
 
@@ -47,15 +48,11 @@ function Home() {
       </div>
       <Row className="container-generic">
       <Col className="tails-container" xs={11} md={6}>
-          {!dbTails.tails ? (
+          {!dbTails ? (
               <div>Loading...</div>
-          ) : 
-            dbTails.tails.map((tail, i) => (
-                <TailList 
-                tail={tail}
-                i={i}
-                key={i}/> 
-            ))
+          ) : (
+            <TailList dbTails={dbTails} /> 
+          )
           }
       </Col>
       

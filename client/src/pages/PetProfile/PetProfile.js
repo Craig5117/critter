@@ -18,13 +18,12 @@ function PetProfile() {
   const [dbTails, setDbTails] = useState([])
   const { data: tails } = useQuery(QUERY_TAILS, {
     variables: { postedBy: idParam ? idParam : Auth.getProfile().data._id },
-    fetchPolicy: 'cache-and-network'
   })
   // tails setter
   useEffect(() => {
     if (tails) {
         setDbTails(tails.tails)
-        console.log(dbTails)
+        // console.log(dbTails)
     }
 }, [tails, dbTails, setDbTails])
 
@@ -102,13 +101,9 @@ function PetProfile() {
       </Row>}
       <Row>
         <Col md={8}>
-        {dbTails && dbTails.map((tail, i) => (
-                <TailList 
-                tail={tail}
-                i={i}
-                key={i}/> 
-            ))
-        }
+          {dbTails && 
+          <TailList dbTails={dbTails} /> 
+          }
         </Col>
       </Row>
       

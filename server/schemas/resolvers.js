@@ -85,7 +85,7 @@ const resolvers = {
                 { new: true }
               );
 
-              return tail;
+              return await tail.populate('postedBy').execPopulate();
             }
           
             throw new AuthenticationError('You need to be logged in!');

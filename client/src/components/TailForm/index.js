@@ -4,26 +4,29 @@ import { ADD_TAIL } from '../../utils/mutations';
 import { QUERY_TAILS, QUERY_ME } from '../../utils/queries';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Auth from '../../utils/auth';
 
 const TailForm = () => {
+  const userId = Auth.getProfile().data._id;
   const [tailText, setText] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
-  const [addTail, { error }] = useMutation(ADD_TAIL
-    , {
+  const [addTail, { error }] = useMutation(ADD_TAIL, {
     update(cache, { data: { addTail } }) {
      
       try {
-        const { tails }  = cache.readQuery({ query: QUERY_TAILS });
-        console.log(tails);
+        const { tails }  = cache.readQuery({ query: QUERY_TAILS, variables: { postedBy: userId } });
+        console.log('this is tails', tails)
         cache.writeQuery({
           query: QUERY_TAILS,
-          data: { tails: [addTail, ...tails] },
+          data: { tails: [...tails, addTail] },
+          variables: { postedBy: userId }
         });
       } catch (e) {
         console.error(e);
       }
 
       const { me } = cache.readQuery({ query: QUERY_ME });
+      console.log('this is me', me.tails)
       cache.writeQuery({
         query: QUERY_ME,
         data: { me: { ...me, tails: [...me.tails, addTail] } },
