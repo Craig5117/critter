@@ -1,5 +1,35 @@
+.tailCard {
+    margin-top: 1em;
+    /* border: 1px solid #9a43b1; */
+}
+
 .card-background {
     background-color: #BADEFC;
     padding: 10px;
+    
 }
 
+.postedBy {
+    margin-left: 0%;
+    padding-left: .5em;
+
+    /* white-space: nowrap; */
+}
+
+.tailText {
+    text-align: center;
+    font-weight: bolder;
+    font-size: 1em;
+    overflow: auto;
+}
+
+.tailsCol {
+    margin-right: 0%;
+    margin-left: 0%;
+}
+.createdAt {
+    text-align: left;
+    font-size: 12px;
+    padding: 0%;
+    margin: 0%;
+}
