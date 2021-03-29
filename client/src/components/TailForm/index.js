@@ -24,7 +24,8 @@ const TailForm = () => {
       } catch (e) {
         console.error(e);
       }
-
+      
+      console.log('cache.readQuery({query: QUERY_TAILS, variables: { postedBy: userId } }): ', cache.readQuery({query: QUERY_TAILS, variables: { postedBy: userId } }));
       const { me } = cache.readQuery({ query: QUERY_ME });
       console.log('this is me', me.tails)
       cache.writeQuery({

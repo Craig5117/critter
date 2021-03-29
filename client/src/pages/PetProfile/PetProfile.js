@@ -18,6 +18,7 @@ function PetProfile() {
   const [dbTails, setDbTails] = useState([])
   const { data: tails } = useQuery(QUERY_TAILS, {
     variables: { postedBy: idParam ? idParam : Auth.getProfile().data._id },
+    fetchPolicy: 'cache-and-network'
   })
   // tails setter
   useEffect(() => {
