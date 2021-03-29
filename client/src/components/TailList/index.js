@@ -21,7 +21,7 @@ function TailsList(props) {
       <Card className="tailCard">
       <Container className="card-background">
      
-          <Col sm={4} className="postedBy justify-content-between">
+          <Col sm={4} className="postedBy pl-lg-5">
               <Image
                 // className="w-100"
                 width="50"
@@ -31,12 +31,14 @@ function TailsList(props) {
               />
               <span>{tail.postedBy.username}</span>
           </Col>
-          <Col sm={8} className="tailText">
+          <Card.Body className="tailText p-0">            
+            <Card.Text>
           {tail.tailText}
-          </Col>
+          </Card.Text>
+          </Card.Body>
      
       </Container>
-      <Card.Footer className="d-flex createdAt"><span>{tail.createdAt}</span></Card.Footer>
+      <Card.Footer className="createdAt"><span>{tail.createdAt}</span></Card.Footer>
 
       </Card>
       </Link>
@@ -45,5 +47,28 @@ function TailsList(props) {
     </div>
   )
 }
+
+{/* <Link to={`/tail/${tail._id}`}>
+              <Card>
+                <div className="d-flex flex-wrap px-4 card-background">
+                  <Col xs={7} md={4} lg={2}>
+                    <div>
+                      <Image
+                        className="w-100"
+                        src={tail.postedBy.image}
+                        roundedCircle
+                      />
+                    </div>
+                  </Col>
+                  <Col>
+                    
+                  </Col>
+                </div>
+                <Card.Footer className="d-flex justify-content-between">
+                  <span>{tail.postedBy.username}</span>
+                  <span>{tail.createdAt}</span>
+                </Card.Footer>
+              </Card>
+            </Link> */}
 
 export default TailsList;
