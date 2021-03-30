@@ -38,15 +38,23 @@ function PetProfile() {
 
 
   
-  const { data } = useQuery(idParam ? QUERY_PET : QUERY_ME, {
+  const { loading: loadingPet, data } = useQuery(idParam ? QUERY_PET : QUERY_ME, {
     variables: { _id: idParam },
   });
+
   const pet = useMemo(() => {
     if (data?.me) {
       return data.me;
     } else if (data?.pet) {
       return data.pet;
-    }
+    } 
+    // else if (!loadingPet) {
+    // console.log(idbPromise('pets', 'get').then((idbPets) => {
+    //   const currentPet = idbPets.filter((pet) => pet._id === userId)
+    //   return currentPet[0] 
+    //  })) 
+    // }
+    // , loadingPet, userId
     return {};
   }, [data]);
 
