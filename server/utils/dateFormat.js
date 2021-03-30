@@ -79,6 +79,8 @@ module.exports = (
   // if hour is 0 (12:00am), change it to 12
   if (hour === 0) {
     hour = 12;
+  } else if (hour > 12) {
+    hour -= 12;
   }
 
   let minutes = dateObj.getMinutes();
