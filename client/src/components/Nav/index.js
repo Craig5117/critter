@@ -35,7 +35,7 @@ function Navigation() {
         payload: '',
       });
   }
-  const { data: types } = useQuery(QUERY_PET_TYPES);
+  const { loading: loadingTypes, data: types } = useQuery(QUERY_PET_TYPES);
 
 // this effect runs the redux dispatch to update the petTypes
   useEffect(() => {
