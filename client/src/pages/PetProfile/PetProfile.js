@@ -11,34 +11,50 @@ import { QUERY_ME, QUERY_PET, QUERY_TAILS } from '../../utils/queries';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Auth from '../../utils/auth';
+import { idbPromise } from '../../utils/helpers';
 
 function PetProfile() {
   const dispatch = useDispatch();
   const { _id: idParam } = useParams();
+  let userId = idParam ? idParam : Auth.getProfile().data._id;
   const [dbTails, setDbTails] = useState([])
-  const { data: tails } = useQuery(QUERY_TAILS, {
-    variables: { postedBy: idParam ? idParam : Auth.getProfile().data._id },
+  const { loading: loadingTails, data: tails } = useQuery(QUERY_TAILS, {
+    variables: { postedBy: userId },
     fetchPolicy: 'cache-and-network'
   })
+
+
   // tails setter
   useEffect(() => {
     if (tails) {
         setDbTails(tails.tails)
         // console.log(dbTails)
+    } else if (!loadingTails) {
+      idbPromise('tails', 'get').then((idbTails) => {
+        setDbTails(idbTails.reverse().filter((tail) => tail.postedBy._id === userId));
+      })
     }
-}, [tails, dbTails, setDbTails])
+}, [tails, loadingTails, userId, setDbTails])
 
 
   
-  const { data } = useQuery(idParam ? QUERY_PET : QUERY_ME, {
+  const { loading: loadingPet, data } = useQuery(idParam ? QUERY_PET : QUERY_ME, {
     variables: { _id: idParam },
   });
+
   const pet = useMemo(() => {
     if (data?.me) {
       return data.me;
     } else if (data?.pet) {
       return data.pet;
-    }
+    } 
+    // else if (!loadingPet) {
+    // console.log(idbPromise('pets', 'get').then((idbPets) => {
+    //   const currentPet = idbPets.filter((pet) => pet._id === userId)
+    //   return currentPet[0] 
+    //  })) 
+    // }
+    // , loadingPet, userId
     return {};
   }, [data]);
 

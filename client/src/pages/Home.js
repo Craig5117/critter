@@ -10,33 +10,54 @@ import { useSelector } from 'react-redux';
 // import Container from 'react-bootstrap/esm/Container';
 
 import './pages.css';
+import { idbPromise } from '../utils/helpers';
 
 function Home() {
-    const { data: pets } = useQuery(QUERY_PETS_BASIC)
+    const { loading: loadingPets, data: pets } = useQuery(QUERY_PETS_BASIC)
     const [dbPets, setDbPets] = useState([])
-    const { data: tails } = useQuery(QUERY_TAILS)
+    const { loading: loadingTails, data: tails } = useQuery(QUERY_TAILS)
     const [dbTails, setDbTails] = useState([])
     const currentPetType = useSelector(state => state.pets.currentPetType)
     // tails setter
     useEffect(() => {
         if (tails) {
-            console.log('home tails', tails.tails)
+            // console.log('home tails', tails.tails)
             setDbTails(tails.tails)
+            tails.tails.forEach(tail => {
+               idbPromise('tails', 'put', tail); 
+            });
+        } else if (!loadingTails) {
+            // if there is no data and we aren't loading, we are offline
+            // get the data from indexedDB
+            idbPromise('tails', 'get').then((idbTails) => {
+                console.log('idbTails: ', idbTails)
+                setDbTails(idbTails.reverse());
+            })
         }
-    }, [tails, setDbTails])
+    }, [tails, loadingTails, setDbTails])
 
     // pets setter
     useEffect(() => {
         if(pets) {
-            setDbPets(pets)
+            setDbPets(pets.pets)
+            pets.pets.forEach(pet => {
+                idbPromise('pets', 'put', pet);
+            });
+        } else if (!loadingPets) {
+              // if there is no data and we aren't loading, we are offline
+            // get the data from indexedDB
+            idbPromise('pets', 'get').then((idbPets) => {
+                console.log('idbPets: ', idbPets)
+                setDbPets(idbPets);
+            })
         }
-    }, [pets, setDbPets ])
+    }, [pets, loadingPets, setDbPets ])
 
     function filterPets() {
         if(!currentPetType) {
-            return dbPets.pets;
+            return dbPets;
         }
-        return dbPets.pets.filter((pet) => pet.petType === currentPetType);
+        return dbPets.filter((pet) => pet.petType === currentPetType);
     }
     
     
@@ -58,7 +79,7 @@ function Home() {
       
       <Col xs={11} md={6} className="d-flex flex-wrap petCard-container">
      
-          {!dbPets.pets ? (
+          {!dbPets ? (
               <div>Loading...</div>
           ) :
             filterPets().map((pet) => (

@@ -9,9 +9,10 @@ import Button from 'react-bootstrap/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_PET_TYPES } from '../../utils/queries';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import Auth from '../../utils/auth';
+import { idbPromise } from '../../utils/helpers';
 // import './nav.css'
 // import Col from 'react-bootstrap/Col';
 // see the React Bootstrap docs on the Navbar component,
@@ -29,72 +30,87 @@ function Navigation() {
     });
   }
 
-  function clearFilter () {
+  function clearFilter() {
     dispatch({
-        type: 'pets/UPDATE_CURRENT_TYPE',
-        payload: '',
-      });
+      type: 'pets/UPDATE_CURRENT_TYPE',
+      payload: '',
+    });
   }
-  const { data: types } = useQuery(QUERY_PET_TYPES);
+  const { loading: loadingTypes, data: types } = useQuery(QUERY_PET_TYPES);
 
-// this effect runs the redux dispatch to update the petTypes
+  // this effect runs the redux dispatch to update the petTypes
   useEffect(() => {
     if (types) {
+      types.petTypes.forEach((type) => {
+        idbPromise('petTypes', 'put', type);
+      });
       dispatch({
+        type: 'pets/UPDATE_PET_TYPES',
+        payload: types.petTypes,
+      });
+    } else if (!loadingTypes) {
+      idbPromise('petTypes', 'get').then((idbTypes) => {
+        dispatch({
           type: 'pets/UPDATE_PET_TYPES',
-          payload: types.petTypes
-      })
+          payload: idbTypes,
+        });
+      });
     }
-  }, [types, dispatch]);
+  }, [types, loadingTypes, dispatch]);
 
-  const petTypes = useSelector(state => state.pets.petTypes)
+  const petTypes = useSelector((state) => state.pets.petTypes);
   // this would be a good case for redux to handle
-  const showPetFilter = useSelector(state => state.nav.showPetFilter)
-  
+  const showPetFilter = useSelector((state) => state.nav.showPetFilter);
+
   useEffect(() => {
-    console.log(location)
+    console.log(location);
     if (location === '/') {
       dispatch({
         type: 'nav/SHOW_PET_FILTER',
-        payload: true
+        payload: true,
       });
-    }
-    else if (showPetFilter && location !== '/') {
-        dispatch({
-          type: 'nav/SHOW_PET_FILTER',
-          payload: false
-        });
+    } else if (showPetFilter && location !== '/') {
+      dispatch({
+        type: 'nav/SHOW_PET_FILTER',
+        payload: false,
+      });
     }
   }, [location, dispatch, showPetFilter]);
 
-  function handleNavDisplay () {
-   
-  }
- 
+  function handleNavDisplay() {}
+
   return (
     <div className="nav">
       <Navbar className="w-100" expand="md">
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto" onClick={handleNavDisplay}>
-        
-          <Nav.Link as={Link} to="/">Home</Nav.Link>
-          {!Auth.loggedIn() && 
-          <>
-          <Nav.Link as={Link} to="/signup">Signup</Nav.Link>
-          <Nav.Link as={Link} to="/login">Login</Nav.Link>
-          </>
-          }
-          {Auth.loggedIn() && 
-          <>
-          <Nav.Link as={Link} to="/profile">My Profile</Nav.Link>
-          <Nav.Link href="/" onClick={() => Auth.logout()}>Logout</Nav.Link>
-          </>
-          }
-         
-        </Nav>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto" onClick={handleNavDisplay}>
+            <Nav.Link as={Link} to="/">
+              Home
+            </Nav.Link>
+            {!Auth.loggedIn() && (
+              <>
+                <Nav.Link as={Link} to="/signup">
+                  Signup
+                </Nav.Link>
+                <Nav.Link as={Link} to="/login">
+                  Login
+                </Nav.Link>
+              </>
+            )}
+            {Auth.loggedIn() && (
+              <>
+                <Nav.Link as={Link} to="/profile">
+                  My Profile
+                </Nav.Link>
+                <Nav.Link href="/" onClick={() => Auth.logout()}>
+                  Logout
+                </Nav.Link>
+              </>
+            )}
+          </Nav>
         </Navbar.Collapse>
-        
+
         <Form inline>
           <FormControl type="text" placeholder="Search" className="mr-sm-2" />
           <Button variant="outline-primary">Search by Pet's Username</Button>
@@ -103,9 +119,13 @@ function Navigation() {
       <div className="d-flex justify-content-end w-100 pr-5">
         {showPetFilter && (
           <NavDropdown title="View by Pet Type" id="basic-nav-dropdown">
-              <NavDropdown.Item onSelect={() => {
-                  clearFilter();
-              }}>All</NavDropdown.Item>
+            <NavDropdown.Item
+              onSelect={() => {
+                clearFilter();
+              }}
+            >
+              All
+            </NavDropdown.Item>
             {petTypes.map((type) => (
               <NavDropdown.Item
                 key={type._id}
