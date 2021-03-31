@@ -28,8 +28,8 @@ function SingleTail(props){
         <div>
             <Card>
                 
-                <div className="d-flex px-4 card-background">
-                  <Col xs={7} md={4} lg={2}>
+                <div className="d-flex flex-wrap px-4 card-background">
+                  <Col xs={12} md={4} lg={3}>
                     <div className="user-card">
                     <Link className="p-0 tail-link" to={`/profile/${tail.postedBy._id}`}>
                      <Card.Footer className="d-flex tail-card">
@@ -46,7 +46,7 @@ function SingleTail(props){
                     </Link>
                     </div>
                   </Col>
-                  <Col>
+                  <Col xs={12} md={8} lg={9}>
                     <Card.Body className="d-flex parent-text bg-white p-3">
                       <Card.Text className="tail-text m-2">{tail.tailText}</Card.Text>
                     </Card.Body>
