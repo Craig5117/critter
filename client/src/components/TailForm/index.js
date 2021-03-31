@@ -12,29 +12,33 @@ const TailForm = () => {
   const [characterCount, setCharacterCount] = useState(0);
   const [addTail, { error }] = useMutation(ADD_TAIL, {
     update(cache, { data: { addTail } }) {
-     
       try {
-        const { tails }  = cache.readQuery({ query: QUERY_TAILS, variables: { postedBy: userId } });
-        console.log('this is tails', tails)
+        const { tails } = cache.readQuery({
+          query: QUERY_TAILS,
+          variables: { postedBy: userId },
+        });
+        console.log('this is tails', tails);
         cache.writeQuery({
           query: QUERY_TAILS,
           data: { tails: [addTail, ...tails] },
-          variables: { postedBy: userId }
+          variables: { postedBy: userId },
         });
       } catch (e) {
         console.error(e);
       }
-      
-      console.log('cache.readQuery({query: QUERY_TAILS, variables: { postedBy: userId } }): ', cache.readQuery({query: QUERY_TAILS, variables: { postedBy: userId } }));
+
+      console.log(
+        'cache.readQuery({query: QUERY_TAILS, variables: { postedBy: userId } }): ',
+        cache.readQuery({ query: QUERY_TAILS, variables: { postedBy: userId } })
+      );
       const { me } = cache.readQuery({ query: QUERY_ME });
-      console.log('this is me', me.tails)
+      console.log('this is me', me.tails);
       cache.writeQuery({
         query: QUERY_ME,
         data: { me: { ...me, tails: [...me.tails, addTail] } },
-      })
+      });
     },
-  }
-  );
+  });
   const handleChange = (event) => {
     if (event.target.value.length <= 10000) {
       setText(event.target.value);
@@ -59,7 +63,7 @@ const TailForm = () => {
   return (
     <div>
       <Form onSubmit={handleFormSubmit}>
-        <Form.Group controlId="exampleForm.ControlTextarea1">
+        <Form.Group controlId="tail-input" className="mb-0">
           <Form.Label>Share your story here.</Form.Label>
           <Form.Control
             as="textarea"
@@ -70,17 +74,19 @@ const TailForm = () => {
           />
         </Form.Group>
         <div className="d-flex justify-content-end">
-        {/* <p
-        className={`m-0 ${
-          characterCount === 10000 || error ? 'text-error' : ''
-        }`}
-      >
-        Character Count: {characterCount}/10000
-        {error && <span className="ml-2">Something went wrong...</span>}
-      </p> */}
-        <Button className="button" type="submit">
-          Wag Your Tail
-        </Button>
+          <p
+            className={`mb-3 ${
+              characterCount === 10000 || error ? 'text-error' : ''
+            }`}
+          >
+            Character Count: {characterCount}/10000
+            {error && <span className="ml-2">Something went wrong...</span>}
+          </p>
+        </div>
+        <div className="d-flex justify-content-end">
+          <Button className="button" type="submit">
+            Wag Your Tail
+          </Button>
         </div>
       </Form>
     </div>
