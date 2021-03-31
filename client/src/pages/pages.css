@@ -1,13 +1,17 @@
 
 
 .form {
-    padding: 50px 100px;
-    margin: 0px 200px;
+    padding:2em;
+   
     text-align: left;
     background-color: #BADEFC;
     font-weight: bold;
     box-shadow: 0 10px 10px 10px rgba(0, 0, 0, 0.2) ;
     border-radius: 25px;
+}
+
+.center-margin {
+    margin: 0 auto;
 }
 
 .container-generic {
@@ -36,5 +40,8 @@ h3 {
 @media screen and (min-width: 1025px) {
     .container-generic {
         padding: 1em 6em;
+    }
+    .form {
+        padding: 3em 6em;
     }
 }
