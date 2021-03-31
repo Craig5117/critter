@@ -6,60 +6,66 @@ import CommentForm from '../components/CommentForm';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
-import CommentList from '../components/CommentList'
+import CommentList from '../components/CommentList';
 import Auth from '../utils/auth';
 import { Link } from 'react-router-dom';
-import './SingleTail.css'
+import './SingleTail.css';
 
-function SingleTail(props){
-    const { id: tailId } = useParams();
+function SingleTail(props) {
+  const { id: tailId } = useParams();
 
-    const { loading, data } = useQuery(QUERY_TAIL, {
-        variables: { id: tailId }
-        });
+  const { loading, data } = useQuery(QUERY_TAIL, {
+    variables: { id: tailId },
+  });
 
-    const tail = data?.tail || {};
+  const tail = data?.tail || {};
 
-    if (loading) {
-        return <div>Loading...</div>;
-    }
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-    return (
-        <div>
-            <Card>
-                
-                <div className="d-flex px-4 card-background">
-                  <Col xs={7} md={4} lg={2}>
-                    <div className="user-card">
-                    <Link className="p-0 tail-link" to={`/profile/${tail.postedBy._id}`}>
-                     <Card.Footer className="d-flex tail-card">
-                        <Col className="p-0">
-                            <Card.Title className="tail-title text-white">{tail.postedBy.username}'s Tail </Card.Title>
-                            <span className="tail-date text-white">wagged on {tail.createdAt}</span>
-                        </Col>
-                    </Card.Footer>   
-                      <Image
-                        className="w-100 mt-2"
-                        src={tail.postedBy.image}
-                        
-                      />
-                    </Link>
+  return (
+    <div>
+      <Card>
+        <div className="d-flex px-4 card-background">
+          <Col xs={7} md={4} lg={2}>
+            <div className="user-card">
+              <Link
+                className="p-0 tail-link"
+                to={`/profile/${tail.postedBy._id}`}
+              >
+                <div className="d-flex tail-card">
+                  <Col xs={12} className="p-0">
+                    <Col>
+                      <Card.Title className="tail-title text-white">
+                        {tail.postedBy.username}'s Tail{' '}
+                      </Card.Title>
+                      <span className="tail-date text-white">
+                        wagged on {tail.createdAt}
+                      </span>
+                    </Col>
+                    <Col>
+                      <Image className="w-100 mt-2" src={tail.postedBy.image} />
+                    </Col>
+                  </Col>
+                  <Col xs={12}>
+                    <div className="d-flex parent-text bg-white p-3">
+                      <p className="tail-text m-2">
+                        {tail.tailText}
+                      </p>
                     </div>
                   </Col>
-                  <Col>
-                    <Card.Body className="d-flex parent-text bg-white p-3">
-                      <Card.Text className="tail-text m-2">{tail.tailText}</Card.Text>
-                    </Card.Body>
-                  </Col>
                 </div>
-               
-                {tail.commentCount > 0 && <CommentList comments = {tail.comments} />}
-                {Auth.loggedIn() &&  <CommentForm tailId={tail._id} />}
-              </Card>
-            
-         
+              </Link>
+            </div>
+          </Col>
         </div>
-    );
+
+        {tail.commentCount > 0 && <CommentList comments={tail.comments} />}
+        {Auth.loggedIn() && <CommentForm tailId={tail._id} />}
+      </Card>
+    </div>
+  );
 }
 
 export default SingleTail;
