@@ -1,7 +1,7 @@
 .petCard {
     word-wrap: normal;
     height: 375px;
-    /* background-color: #badefc; */
+    background-color: #badefc;
     margin-top: 1em;
     border: #9443b1 solid 1px;
 }

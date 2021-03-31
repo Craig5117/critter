@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import Auth from '../../utils/auth';
 import { idbPromise } from '../../utils/helpers';
-// import './nav.css'
+import './nav.css'
 // import Col from 'react-bootstrap/Col';
 // see the React Bootstrap docs on the Navbar component,
 // especially the section labelled color schemes
@@ -110,25 +110,25 @@ function Navigation() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto" onClick={handleNavDisplay}>
-            <Nav.Link as={Link} to="/">
+            <Nav.Link className="navLink" as={Link} to="/">
               Home
             </Nav.Link>
             {!Auth.loggedIn() && (
               <>
-                <Nav.Link as={Link} to="/signup">
+                <Nav.Link className="navLink" as={Link} to="/signup">
                   Signup
                 </Nav.Link>
-                <Nav.Link as={Link} to="/login">
+                <Nav.Link className="navLink" as={Link} to="/login">
                   Login
                 </Nav.Link>
               </>
             )}
             {Auth.loggedIn() && (
               <>
-                <Nav.Link as={Link} to="/profile">
+                <Nav.Link className="navLink" as={Link} to="/profile">
                   My Profile
                 </Nav.Link>
-                <Nav.Link href="/" onClick={() => Auth.logout()}>
+                <Nav.Link className="navLink" href="/" onClick={() => Auth.logout()}>
                   Logout
                 </Nav.Link>
               </>

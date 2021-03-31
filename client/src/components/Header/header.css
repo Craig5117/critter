@@ -2,4 +2,9 @@
     width: 7em;
     display: inline-block;
 }
+.header {
+    background-color: #badefc;
+    border: #9443b1 solid 1px;
+
+}
 

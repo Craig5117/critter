@@ -6,7 +6,7 @@ import Navigation from '../Nav';
 
 function Header() {
   return (
-    <header>
+    <header className="header">
       <Link className="header-link p-0" to="/">
         <h1 className="logo-header">Critter</h1>
       </Link>

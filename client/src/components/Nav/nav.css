@@ -1,0 +1,15 @@
+.nav {
+  background-color: #badefc;
+  /* border-top: #9443b1 solid 1px; */
+  border-bottom: #9443b1 solid 1px;
+  color: #9443b1;
+}
+.navLink {
+  color: #9443b1;
+  border: #badefc solid 1px;
+  border-radius: 7px;
+}
+.navLink:hover {
+  background-color: #9443b1;
+  color: white;
+}
