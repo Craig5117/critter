@@ -28,11 +28,11 @@ function SingleTail(props){
         <div>
             <Card>
                 
-                <div className="d-flex flex-wrap px-4 card-background">
+                <div className="d-flex flex-wrap px-4">
                   <Col xs={12} md={4} lg={3}>
                     <div className="user-card">
                     <Link className="p-0 tail-link" to={`/profile/${tail.postedBy._id}`}>
-                     <Card.Footer className="d-flex tail-card">
+                     <Card.Footer className="d-flex tail-card mt-2">
                         <Col className="">
                             <Card.Title className="tail-title text-white">{tail.postedBy.username}'s Tail </Card.Title>
                             <span className="tail-date text-white">wagged on {tail.createdAt}</span>
@@ -47,7 +47,7 @@ function SingleTail(props){
                     </div>
                   </Col>
                   <Col xs={12} md={8} lg={9}>
-                    <Card.Body className="d-flex parent-text bg-white p-3">
+                    <Card.Body className="d-flex parent-text p-3 mt-2">
                       <Card.Text className="tail-text m-2">{tail.tailText}</Card.Text>
                     </Card.Body>
                   </Col>
