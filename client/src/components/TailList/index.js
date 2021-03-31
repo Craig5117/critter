@@ -5,7 +5,6 @@ import Image from 'react-bootstrap/Image';
 import Col from 'react-bootstrap/Col';
 import { Link } from 'react-router-dom';
 // import Media from 'react-bootstrap/Media';
-import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import './tailList.css';
 
