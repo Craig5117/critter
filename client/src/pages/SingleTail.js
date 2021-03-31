@@ -8,6 +8,8 @@ import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import CommentList from '../components/CommentList'
 import Auth from '../utils/auth';
+import { Link } from 'react-router-dom';
+import './SingleTail.css'
 
 function SingleTail(props){
     const { id: tailId } = useParams();
@@ -26,29 +28,35 @@ function SingleTail(props){
         <div>
             <Card>
                 
-                <div className="d-flex flex-wrap px-4 card-background">
+                <div className="d-flex px-4 card-background">
                   <Col xs={7} md={4} lg={2}>
-                    <div>
+                    <div className="user-card">
+                    <Link className="p-0 tail-link" to={`/profile/${tail.postedBy._id}`}>
+                     <Card.Footer className="d-flex tail-card">
+                        <Col className="">
+                            <Card.Title className="tail-title text-white">{tail.postedBy.username}'s Tail </Card.Title>
+                            <span className="tail-date text-white">wagged on {tail.createdAt}</span>
+                        </Col>
+                    </Card.Footer>   
                       <Image
-                        className="w-100"
+                        className="w-100 mt-2"
                         src={tail.postedBy.image}
-                        roundedCircle
+                        
                       />
+                    </Link>
                     </div>
                   </Col>
                   <Col>
-                    <Card.Body>
-                      <Card.Text>{tail.tailText}</Card.Text>
+                    <Card.Body className="d-flex parent-text bg-white p-3">
+                      <Card.Text className="tail-text m-2">{tail.tailText}</Card.Text>
                     </Card.Body>
                   </Col>
                 </div>
-                <Card.Footer className="d-flex justify-content-between">
-                  <span>{tail.postedBy.username}</span>
-                  <span>{tail.createdAt}</span>
-                </Card.Footer>
+               
                 {tail.commentCount > 0 && <CommentList comments = {tail.comments} />}
+                {Auth.loggedIn() &&  <CommentForm tailId={tail._id} />}
               </Card>
-            {Auth.loggedIn() &&  <CommentForm tailId={tail._id} />}
+            
          
         </div>
     );
