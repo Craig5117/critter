@@ -38,7 +38,7 @@ function TailsList(props) {
           </Card.Body>
      
       </Container>
-      <Card.Footer className="createdAt"><span>{tail.createdAt}</span></Card.Footer>
+      <Card.Footer className="createdAt d-flex justify-content-between px-3"><span>{tail.createdAt}</span><span>Comments: {tail.commentCount}</span></Card.Footer>
 
       </Card>
       </Link>
