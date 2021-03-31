@@ -125,10 +125,10 @@ function Navigation() {
             )}
             {Auth.loggedIn() && (
               <>
-                <Nav.Link className="button" as={Link} to="/profile">
+                <Nav.Link className="button mx-3" as={Link} to="/profile">
                   My Profile
                 </Nav.Link>
-                <Nav.Link className="button" href="/" onClick={() => Auth.logout()}>
+                <Nav.Link className="button mx-3" href="/" onClick={() => Auth.logout()}>
                   Logout
                 </Nav.Link>
               </>
