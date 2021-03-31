@@ -30,30 +30,29 @@ const CommentForm = ({ tailId }) => {
   };
 
   return (
-    <div>
      
       <Form
         className="flex-row justify-center justify-space-between-md align-stretch ml-4 mt-2"
         onSubmit={handleFormSubmit}
       >
 
-         <p className={`m-0 ${characterCount === 3000 || error ? 'text-error' : ''}`}>
-        Character Count: {characterCount}/3000
-        {error && <span className="ml-2">Something went wrong...</span>}
-      </p>
+         
         <textarea
           placeholder="Leave a comment to this tail..."
           value={commentText}
           className="form-input col-12 col-md-9"
           onChange={handleChange}
         ></textarea>
+        <p className={`m-0 mb-2${characterCount === 3000 || error ? 'text-error' : ''}`}>
+        Character Count: {characterCount}/3000
+        {error && <span className="ml-2">Something went wrong...</span>}
+      </p>
         <div className="justify-content-end">
-          <Button className="buton" type="submit">
+          <Button className="buton mb-5" type="submit">
             Submit
           </Button>
         </div>
       </Form>
-    </div>
   );
 };
 
