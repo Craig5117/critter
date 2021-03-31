@@ -32,7 +32,7 @@ const CommentForm = ({ tailId }) => {
   return (
      
       <Form
-        className="flex-row justify-center justify-space-between-md align-stretch ml-4 mt-2"
+        className="flex-row justify-center justify-space-between-md align-stretch mx-5 mt-2"
         onSubmit={handleFormSubmit}
       >
 
