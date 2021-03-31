@@ -18,7 +18,7 @@ const TailForm = () => {
         console.log('this is tails', tails)
         cache.writeQuery({
           query: QUERY_TAILS,
-          data: { tails: [...tails, addTail] },
+          data: { tails: [addTail, ...tails] },
           variables: { postedBy: userId }
         });
       } catch (e) {

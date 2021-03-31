@@ -11,12 +11,10 @@ import './tailList.css';
 
 
 function TailsList(props) {
-  const { dbTails } = props;
+  const { tail } = props;
   return (
     <div>
-    {dbTails &&
-      dbTails.map((tail) => (
-        <div key={Math.random().toString(36).substr(2, 9)}>
+        <div>
           <Link to={`/tail/${tail._id}`}>
       <Card className="tailCard">
       <Container className="card-background">
@@ -43,7 +41,6 @@ function TailsList(props) {
       </Card>
       </Link>
           </div>
-        ))}
     </div>
   )
 }

@@ -28,9 +28,10 @@ h2 {
   display: block; 
 }
 
-.button:hover {
+.button:hover, .button:focus {
   background-color: #7e0c9e;
 }
+
 
 ::-webkit-scrollbar {
   width: .5em;

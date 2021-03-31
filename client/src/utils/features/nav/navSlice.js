@@ -10,12 +10,15 @@ export default function navReducer (state= initialState, action) {
             return {
                 ...state,
                 showPetFilter: action.payload 
-            }
+            };
         case "nav/SHOW_LOGIN_SIGNUP":
             return;
         case "nav/SHOW_SEARCH_BAR":
-            return;
+            return {
+                ...state,
+                showSearchBar: action.payload
+            };
         default:
-            return state
+            return state;
     }
 }

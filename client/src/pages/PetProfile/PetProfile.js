@@ -120,7 +120,11 @@ function PetProfile() {
       <Row>
         <Col md={8}>
           {dbTails && 
-          <TailList dbTails={dbTails} /> 
+          dbTails.reverse().map((tail) => (
+            <TailList  
+            tail={tail}
+            key={tail._id}/> 
+        ))
           }
         </Col>
       </Row>

@@ -1,7 +1,8 @@
 const initialState = {
     
     petTypes: [],
-    currentPetType: ''
+    currentPetType: '',
+    currentPetName: ''
 }
 // petsList: [],
 
@@ -11,6 +12,12 @@ export default function petsReducer(state = initialState, action) {
             return {
                 ...state,
                 currentPetType: action.payload
+            }
+        }
+        case 'pets/UPDATE_CURRENT_NAME': {
+            return {
+                ...state,
+                currentPetName: action.payload
             }
         }
         case 'pets/UPDATE_PET_TYPES': {

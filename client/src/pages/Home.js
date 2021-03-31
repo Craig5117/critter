@@ -18,6 +18,7 @@ function Home() {
     const { loading: loadingTails, data: tails } = useQuery(QUERY_TAILS)
     const [dbTails, setDbTails] = useState([])
     const currentPetType = useSelector(state => state.pets.currentPetType)
+    const currentPetName = useSelector(state => state.pets.currentPetName)
     // tails setter
     useEffect(() => {
         if (tails) {
@@ -53,8 +54,15 @@ function Home() {
         }
     }, [pets, loadingPets, setDbPets ])
 
+    function filterTails() {
+        if (!currentPetName) {
+            return dbTails;
+        }
+        return dbTails.filter((tail) => tail.postedBy.username === currentPetName)
+    }
+
     function filterPets() {
-        if(!currentPetType) {
+        if (!currentPetType) {
             return dbPets;
         }
         return dbPets.filter((pet) => pet.petType === currentPetType);
@@ -72,7 +80,11 @@ function Home() {
           {!dbTails ? (
               <div>Loading...</div>
           ) : (
-            <TailList dbTails={dbTails} /> 
+            filterTails().map((tail) => (
+                <TailList  
+                tail={tail}
+                key={tail._id}/> 
+            ))
           )
           }
       </Col>

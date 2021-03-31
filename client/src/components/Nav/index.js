@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect} from 'react';
 // import { Link } from 'react-router-dom';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Navbar from 'react-bootstrap/Navbar';
@@ -21,7 +21,7 @@ import { idbPromise } from '../../utils/helpers';
 // <Nav.Link as={Link}></Nav.Link>
 
 function Navigation() {
-  let location = useLocation().pathname;
+   let location = useLocation().pathname;
   const dispatch = useDispatch();
   function handleClick(name) {
     dispatch({
@@ -30,6 +30,23 @@ function Navigation() {
     });
   }
 
+  function handleSearch(event) {
+    event.preventDefault()
+    const searchedName = event.target.querySelector('#search-bar').value.trim()
+    dispatch({
+      type: 'pets/UPDATE_CURRENT_NAME',
+      payload: searchedName,
+    })
+    console.log(searchedName)
+  }
+
+  function clearPetName() {
+    dispatch({
+      type: 'pets/UPDATE_CURRENT_NAME',
+      payload: '',
+    })
+    document.querySelector('#search-bar').value = '';
+  }
   function clearFilter() {
     dispatch({
       type: 'pets/UPDATE_CURRENT_TYPE',
@@ -61,7 +78,7 @@ function Navigation() {
   const petTypes = useSelector((state) => state.pets.petTypes);
   // this would be a good case for redux to handle
   const showPetFilter = useSelector((state) => state.nav.showPetFilter);
-
+  const showSearchBar = useSelector((state) => state.nav.showSearchBar);
   useEffect(() => {
     console.log(location);
     if (location === '/') {
@@ -69,9 +86,17 @@ function Navigation() {
         type: 'nav/SHOW_PET_FILTER',
         payload: true,
       });
+      dispatch({
+        type: 'nav/SHOW_SEARCH_BAR',
+        payload: true,
+      });
     } else if (showPetFilter && location !== '/') {
       dispatch({
         type: 'nav/SHOW_PET_FILTER',
+        payload: false,
+      });
+      dispatch({
+        type: 'nav/SHOW_SEARCH_BAR',
         payload: false,
       });
     }
@@ -110,11 +135,13 @@ function Navigation() {
             )}
           </Nav>
         </Navbar.Collapse>
-
-        <Form inline>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          <Button variant="outline-primary">Search by Pet's Username</Button>
-        </Form>
+              {showSearchBar &&
+                <Form inline onSubmit={handleSearch}>
+                <Button className="button" onClick={clearPetName}>X</Button>
+                <FormControl name="name" type="text" placeholder="Search" className="mr-sm-2" id="search-bar"/>
+                <Button className="button" type="submit">Search by Pet's Username</Button>
+              </Form>
+              }
       </Navbar>
       <div className="d-flex justify-content-end w-100 pr-5">
         {showPetFilter && (
