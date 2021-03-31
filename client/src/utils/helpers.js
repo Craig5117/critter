@@ -13,10 +13,11 @@ export function idbPromise(storeName, method, object) {
 
     request.onupgradeneeded = function (event) {
       const db = request.result;
-      // sets up stores for petTypes, tails, and pets
+      // sets up stores for petTypes, tails, pets, and offlineTails
       db.createObjectStore('petTypes', { keyPath: '_id' });
       db.createObjectStore('tails', { keyPath: '_id' });
       db.createObjectStore('pets', { keyPath: '_id' });
+    //   db.createObjectStore('offlineTails', { autoIncrement: true });
     };
 
     // handles the connection errors
