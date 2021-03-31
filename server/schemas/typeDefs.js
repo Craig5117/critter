@@ -35,7 +35,7 @@ type Comment {
     username: String
 }
 
-type petType {
+type PetType {
     _id: ID
     name: String!
 
@@ -48,7 +48,7 @@ type Query {
     pet(_id: ID!): Pet
     tails(postedBy: ID): [Tail]
     tail(_id: ID!): Tail
-    petTypes: [petType]
+    petTypes: [PetType]
     }
 
 type Mutation {

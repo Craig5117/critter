@@ -1,11 +1,11 @@
 const db = require('./connection');
-const { Pet, Tail, petType} = require('../models');
+const { Pet, Tail, PetType} = require('../models');
 
 
 db.once('open', async () => {
-    await petType.deleteMany();
+    await PetType.deleteMany();
 
-    const types = await petType.insertMany([
+    const types = await PetType.insertMany([
         {name: 'Dog'},
         {name: 'Cat'},
         {name: 'Fish'},
