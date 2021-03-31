@@ -1,5 +1,6 @@
 .tailCard {
     margin-top: 1em;
+    border: #9443b1 solid 1px;
     /* border: 1px solid #9a43b1; */
 }
 
@@ -10,6 +11,7 @@
 }
 
 .postedBy {
+    text-align: center;
     margin-left: 0%;
     padding-left: .5em;
 
@@ -32,4 +34,6 @@
     font-size: 12px;
     padding: 0%;
     margin: 0%;
+    background-color: #9443b1;
+    color: white;
 }

@@ -1,8 +1,9 @@
 .petCard {
     word-wrap: normal;
     height: 375px;
-    background-color: #badefc;
+    /* background-color: #badefc; */
     margin-top: 1em;
+    border: #9443b1 solid 1px;
 }
 
 .username {
@@ -22,10 +23,6 @@
     white-space: nowrap;
     text-overflow: ellipsis;
 }
-
-/* .username:hover {
-    overflow:visible;
-} */
 
 .petCard-container {
     padding-right: 2em;
@@ -56,6 +53,8 @@
     color: #2688e3;
     font-size: 100%;
     font-weight: bolder;
+    background-color: #badefc;
+
 }
 
 /* Relationship status */
@@ -64,7 +63,19 @@
     color: #7e0c9e;
     font-size: 2em;
 }
-
-/* .rel-status {
-    
-} */
+/* ::-webkit-scrollbar {
+    width: .5em;
+}
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(67, 55, 61, 0.3);
+    background-color: var(--accent-dark);
+}
+::-webkit-scrollbar-thumb {
+    background-color: #DBBFE4;
+    outline: 1px solid #433737;
+    border-radius: 25px;
+    box-shadow: 0 1px #BC8ACE;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #9443b1; 
+}   */
