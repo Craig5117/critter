@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'react-bootstrap/Image';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -123,7 +123,7 @@ function PetProfile() {
           <span>{pet.petType}</span>
         </Col>
         <Col>
-          <span>{pet.age}</span>
+          <span>Age: {pet.age}</span>
         </Col>
       </Row>
       <Row>
