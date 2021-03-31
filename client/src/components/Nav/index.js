@@ -109,26 +109,26 @@ function Navigation() {
       <Navbar className="w-100" expand="md">
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto" onClick={handleNavDisplay}>
-            <Nav.Link className="navLink" as={Link} to="/">
+          <Nav className="mr-auto" variant="light" onClick={handleNavDisplay}>
+            <Nav.Link className="button"  as={Link} to="/">
               Home
             </Nav.Link>
             {!Auth.loggedIn() && (
               <>
-                <Nav.Link className="navLink" as={Link} to="/signup">
+                <Nav.Link className="button" as={Link} to="/signup">
                   Signup
                 </Nav.Link>
-                <Nav.Link className="navLink" as={Link} to="/login">
+                <Nav.Link className="button" as={Link} to="/login">
                   Login
                 </Nav.Link>
               </>
             )}
             {Auth.loggedIn() && (
               <>
-                <Nav.Link className="navLink" as={Link} to="/profile">
+                <Nav.Link className="button" as={Link} to="/profile">
                   My Profile
                 </Nav.Link>
-                <Nav.Link className="navLink" href="/" onClick={() => Auth.logout()}>
+                <Nav.Link className="button" href="/" onClick={() => Auth.logout()}>
                   Logout
                 </Nav.Link>
               </>
