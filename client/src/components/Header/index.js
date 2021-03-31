@@ -9,7 +9,7 @@ import Navigation from '../Nav';
 
 function Header() {
   return (
-    <header className="header">
+    <header className="header pt-2">
       <Col xs={10} md={3} className="mt-3">
       <Link className="header-link p-0" to="/">
         <Image src={headerLogo} alt="critter tails logo" className="w-100"></Image>
