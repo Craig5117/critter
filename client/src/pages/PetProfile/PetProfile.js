@@ -10,6 +10,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { QUERY_ME, QUERY_PET, QUERY_TAILS } from '../../utils/queries';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import Auth from '../../utils/auth';
 import { idbPromise } from '../../utils/helpers';
 
@@ -92,7 +93,11 @@ function PetProfile() {
     }
     return <i className="fas fa-mars male-profile"></i>;
   }
-  console.log('pet: ', pet);
+  
+if (!idParam && !Auth.loggedIn()){
+      return <Redirect to="/login" />
+} 
+
   return (
     <div>
       <Row>
