@@ -33,7 +33,7 @@ function SingleTail(props){
                     <div className="user-card">
                     <Link className="p-0 tail-link" to={`/profile/${tail.postedBy._id}`}>
                      <Card.Footer className="d-flex tail-card">
-                        <Col className="">
+                        <Col className="p-0">
                             <Card.Title className="tail-title text-white">{tail.postedBy.username}'s Tail </Card.Title>
                             <span className="tail-date text-white">wagged on {tail.createdAt}</span>
                         </Col>

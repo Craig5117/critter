@@ -100,7 +100,7 @@ const resolvers = {
                 { new: true, runValidators: true }
               );
           
-              return updatedTail;
+              return await updatedTail.populate('postedBy').execPopulate();
             }
           
             throw new AuthenticationError('You need to be logged in!');

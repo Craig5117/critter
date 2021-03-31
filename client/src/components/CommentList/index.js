@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
 import Card from 'react-bootstrap/Card';
 
 const CommentList = ({ comments }) => {
@@ -12,9 +12,9 @@ const CommentList = ({ comments }) => {
             {comments &&
             comments.map(comment => (
                 <Card>
-                    <Link className="mt-3 ml-3 font-weight-bold" to={`/profile/${comment.username}`}>
+                    <p className="mt-3 ml-3 font-weight-bold">
                         {comment.username}
-                    </Link>
+                    </p>
                     <p className="pill m-3" key={comment._id}>
                     {comment.commentText}
                     
