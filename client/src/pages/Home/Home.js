@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 // import ProfileImage from '../components/ProfileImage';
-import PetCard from '../components/PetCard';
-import TailList from '../components/TailList';
+import PetCard from '../../components/PetCard';
+import TailList from '../../components/TailList';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { useQuery } from '@apollo/react-hooks';
-import { QUERY_PETS_BASIC, QUERY_TAILS } from '../utils/queries';
+import { QUERY_PETS_BASIC, QUERY_TAILS } from '../../utils/queries';
 import { useSelector } from 'react-redux';
 // import Container from 'react-bootstrap/esm/Container';
 
-import './pages.css';
-import { idbPromise } from '../utils/helpers';
+import './home.css';
+import { idbPromise } from '../../utils/helpers';
 
 function Home() {
     const { loading: loadingPets, data: pets } = useQuery(QUERY_PETS_BASIC)

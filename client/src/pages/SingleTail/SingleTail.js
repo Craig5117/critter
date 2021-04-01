@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
-import { QUERY_TAIL } from '../utils/queries';
-import CommentForm from '../components/CommentForm';
+import { QUERY_TAIL } from '../../utils/queries';
+import CommentForm from '../../components/CommentForm';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
-import CommentList from '../components/CommentList'
-import Auth from '../utils/auth';
-import { idbPromise } from '../utils/helpers';
+import CommentList from '../../components/CommentList'
+import Auth from '../../utils/auth';
+import { idbPromise } from '../../utils/helpers';
 import { Link } from 'react-router-dom';
 import './SingleTail.css'
 

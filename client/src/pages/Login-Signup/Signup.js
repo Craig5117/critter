@@ -4,12 +4,12 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 // import { validateEmail } from '../utils/helpers';
 import { useMutation, useQuery } from '@apollo/react-hooks';
-import { ADD_PET } from '../utils/mutations';
-import { QUERY_PET_TYPES } from '../utils/queries';
-import Auth from '../utils/auth';
+import { ADD_PET } from '../../utils/mutations';
+import { QUERY_PET_TYPES } from '../../utils/queries';
+import Auth from '../../utils/auth';
 import { Redirect } from 'react-router-dom';
 
-import './pages.css';
+import './login-signup.css';
 
 function Signup() {
   const [validated, setValidated] = useState(false);

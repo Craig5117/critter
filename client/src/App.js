@@ -4,11 +4,11 @@ import ApolloClient from 'apollo-boost';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Header from './components/Header';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
+import Home from './pages/Home/Home';
+import Login from './pages/Login-Signup/Login';
+import Signup from './pages/Login-Signup/Signup';
 import PetProfile from './pages/PetProfile/PetProfile';
-import SingleTail from './pages/SingleTail';
+import SingleTail from './pages/SingleTail/SingleTail';
 import NoMatch from './pages/NoMatch';
 
 
