@@ -12,7 +12,7 @@ function TailsList(props) {
   return (
     <div>
         <div>
-          <Link to={`/tail/${tail._id}`}>
+          <Link className="tailList-link" to={`/tail/${tail._id}`}>
       <Card className="tailCard">
       <Container className="card-background">
      
@@ -25,7 +25,7 @@ function TailsList(props) {
                 src={tail.postedBy.image}
                 roundedCircle
               />
-              <span>{tail.postedBy.username}</span>
+              <span className="tail-username ml-2">{tail.postedBy.username}</span>
           </Col>
           <Card.Body className="tailText p-0">            
             <Card.Text>
