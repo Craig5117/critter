@@ -94,7 +94,7 @@ function PetProfile() {
   }
   console.log('pet: ', pet);
   return (
-    <div>
+    <div className="petProfile">
       <Row>
         <Col xs={7} md={3}>
           {idParam ? (
@@ -106,29 +106,31 @@ function PetProfile() {
           )}
         </Col>
         <Col>
-          <p>{renderSexSymbol()}</p>
-        </Col>
-      </Row>
-      <Row>
-        <Col md={4}>
-          <span>{pet.username}</span>
-        </Col>
-        <Col>
+          <p>{renderSexSymbol()}  Gender </p>
           <i className="heart-profile fas fa-heart"></i>
           <span>{pet.relationshipStatus}</span>
         </Col>
+       
+      </Row>
+      <Row>
+        <Col md={4}>
+          <span className="petName">{pet.username}</span>
+        </Col>
+        
       </Row>
       <Row>
         <Col md={4}>
           <span>{pet.petType}</span>
         </Col>
-        <Col>
+      </Row>
+      <Row>
+      <Col>
           <span>Age: {pet.age}</span>
         </Col>
       </Row>
       <Row>
-        <Col>
-          <p>{pet.bio}</p>
+        <Col className="petBio">
+          <p>Bio: {pet.bio}</p>
         </Col>
       </Row>
       {!idParam && (
