@@ -7,7 +7,7 @@
 }
 
 .username {
-    color: #badefc;
+    color: white;
     font-weight: bolder;
     background-color: #9443b1;
     margin-bottom: 0%;
@@ -50,7 +50,7 @@
 }
 
 .petBody {
-    color: #2688e3;
+    color: #1c6cb8;
     font-size: 100%;
     font-weight: bolder;
     background-color: #badefc;

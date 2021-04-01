@@ -23,6 +23,20 @@
     font-weight: bolder;
     font-size: 1em;
     overflow: auto;
+   
+}
+
+.tailList-link {
+    color: #1c6cb8;
+}
+
+.tailList-link:hover {
+    color: #36296a;
+}
+
+.tail-username {
+    font-weight: bold;
+    font-style: italic;
 }
 
 .tailsCol {
