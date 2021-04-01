@@ -73,7 +73,7 @@ function Home() {
     
     <div>
       <div className="subtitle text-center">
-        Tails and Furrends
+        Tails and Furriends
       </div>
       <Row className="container-generic">
       <Col className="tails-container" xs={11} md={6}>
