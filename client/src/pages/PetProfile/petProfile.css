@@ -1,3 +1,13 @@
+.petProfile {
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    padding-top: 1.5em;
+    font-size: 18px;
+    /* background-color: #badefc; */
+    border-top: #9A43B1 solid 1px;
+
+}
+
 .profile-image {
     width: 200px;
     height: 200px;
@@ -7,15 +17,24 @@
 
 .female-profile {
     color: #9A43B1;
-    font-size: 8em;
+    font-size: 4em;
 }
 
 .male-profile {
     color: #60FB65;
-    font-size: 8em;
+    font-size: 4em;
 }
 
 .heart-profile {
     color: #9A43B1;
-    font-size: 4em;
+    font-size: 3em;
 }
+.petName {
+    color: #2688E3;
+    font-weight: bolder;
+    font-size: 25px;
+    text-align: center;
+}
+/* .petBio {
+    border-bottom: #9A43B1 solid;
+} */
