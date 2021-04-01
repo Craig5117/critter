@@ -155,7 +155,6 @@ if (loggedIn && idParam === Auth.getProfile().data._id) {
       </Row>
       <Row>
         <Col md={4}>
-          
           <span>I'm a </span><Image src={petTypeIcon} alt={`${pet.petType} icon`}></Image>
         </Col>
       </Row>
