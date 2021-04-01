@@ -10,3 +10,13 @@
   margin-right: 2px;
   color: white !important;
 }
+
+#basic-nav-dropdown {
+  color: #9443b1;
+}
+
+#basic-nav-dropdown:hover {
+  color: #7e0c9e;
+}
+
+

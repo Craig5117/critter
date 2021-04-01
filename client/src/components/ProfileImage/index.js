@@ -13,12 +13,6 @@ function ProfileImage () {
     const storedImage = useSelector(state => state.me.image)
     const [addProfileImage] = useMutation(ADD_PROFILE_IMAGE);
    
-    // useEffect(() => {
-    //     if (image) {
-            
-    //         console.log('added')
-    //     }
-    // }, [image, addProfileImage])
     const [loading, setLoading] = useState(false);
     const compress = new Compress();
     const uploadImage = async (e) => {
@@ -60,6 +54,7 @@ function ProfileImage () {
         <div>
             <label htmlFor="image-upload" id="image-upload-label"><Image
             className="w-100"
+            alt="profile image input"
               src={storedImage}
               roundedCircle
             /></label>

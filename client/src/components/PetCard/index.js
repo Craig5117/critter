@@ -1,9 +1,7 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom'
-// import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
-// import Row from 'react-bootstrap/Row';
 import './petCard.css'
 
 
@@ -28,11 +26,13 @@ function PetCard(props) {
       <Card.Header className="username mb-1">{pet.username}</Card.Header>
           
       <div className="image-container"><Card.Img variant="top" 
-              className="image w-100"
+              className="image"
               src={pet.image}
+              width="100%"
+              height="100%"
+              alt={`${pet.username}'s profile image`}
             /> </div>   
       <Card.Body className="petBody">
-        {/* <p className="username mb-1">{pet.username}</p> */}
         {renderSexSymbol()}
         <p className="mb-1">{pet.petType}</p>
         <p className="rel-status"><i className="heart-card fas fa-heart"></i><br /><span>{pet.relationshipStatus}</span></p>

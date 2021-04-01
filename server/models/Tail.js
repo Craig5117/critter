@@ -39,11 +39,3 @@ tailSchema.virtual('commentCount').get(function() {
 
 const Tail = model('Tail', tailSchema);
 module.exports = Tail;
-
-// postText {String, required, minlength 1, maxlength 10000}
-// createdAt {Date, default, get}
-// username {String, required}
-// comments [commentSchema]
-// getters true
-
-// virtual commentCount

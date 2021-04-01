@@ -1,5 +1,4 @@
 import React, { useEffect} from 'react';
-// import { Link } from 'react-router-dom';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
@@ -14,11 +13,6 @@ import { useLocation } from 'react-router-dom';
 import Auth from '../../utils/auth';
 import { idbPromise } from '../../utils/helpers';
 import './nav.css'
-// import Col from 'react-bootstrap/Col';
-// see the React Bootstrap docs on the Navbar component,
-// especially the section labelled color schemes
-// add as={Link} to Nav.Link so it will work with react-router
-// <Nav.Link as={Link}></Nav.Link>
 
 function Navigation() {
    let location = useLocation().pathname;

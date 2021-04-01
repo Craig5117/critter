@@ -83,16 +83,3 @@ petSchema.virtual('friendCount').get(function() {
 
   const Pet = model('Pet', petSchema);
   module.exports = Pet;
-  
-//username {String, required, unique, trim}
-// petType {String, required, trim}
-// image {String}
-// age {Int}
-// sex {String, required}
-// bio {string, required}
-// humanStatus {string}
-// posts [{ref Post}]
-// friends [{ ref Pet}]
-// include a virtual for friendCount see logic at the bottom of user in Deep-Thoughts
-
-// see the logic in Deep-Thoughts for the password encryption logic

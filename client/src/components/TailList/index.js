@@ -1,10 +1,8 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-// import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
 import Col from 'react-bootstrap/Col';
 import { Link } from 'react-router-dom';
-// import Media from 'react-bootstrap/Media';
 import Container from 'react-bootstrap/Container';
 import './tailList.css';
 
@@ -23,6 +21,7 @@ function TailsList(props) {
                 // className="w-100"
                 width="50"
                 height="50"
+                alt={`${tail.postedBy.username}'s profile image`}
                 src={tail.postedBy.image}
                 roundedCircle
               />
