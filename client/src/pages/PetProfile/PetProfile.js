@@ -15,6 +15,8 @@ import Auth from '../../utils/auth';
 import { idbPromise } from '../../utils/helpers';
 
 function PetProfile() {
+  const loggedIn = Auth.loggedIn();
+  console.log(loggedIn)
   const dispatch = useDispatch();
   const { _id: idParam } = useParams();
   let userId = idParam ? idParam : Auth.getProfile().data._id;
@@ -94,9 +96,13 @@ function PetProfile() {
     return <i className="fas fa-mars male-profile"></i>;
   }
   
-if (!idParam && !Auth.loggedIn()){
+if (!idParam && !loggedIn){
       return <Redirect to="/login" />
 } 
+
+if (loggedIn && idParam === Auth.getProfile().data._id) {
+  return <Redirect to="/profile" />
+}
 
   return (
     <div className="petProfile">

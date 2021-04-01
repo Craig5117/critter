@@ -10,7 +10,7 @@ import Signup from './pages/Signup';
 import PetProfile from './pages/PetProfile/PetProfile';
 import SingleTail from './pages/SingleTail';
 import NoMatch from './pages/NoMatch';
-import Auth from './utils/auth';
+
 
 import './index.css';
 
@@ -32,7 +32,6 @@ function App() {
       <Router>
         <div className="generic">
           <Header />
-
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
