@@ -1,4 +1,5 @@
 import decode from 'jwt-decode';
+// import { Redirect } from 'react-router-dom'
 
 class AuthService {
     // retrieve data saved in token
@@ -42,6 +43,10 @@ class AuthService {
       localStorage.setItem('id_token', idToken);
   
       window.location.assign('/profile');
+     
+     // this is slow and requires two clicks
+      // return  <Redirect to="/profile" />
+      
     }
   
     // clear token from localStorage and force logout with reload

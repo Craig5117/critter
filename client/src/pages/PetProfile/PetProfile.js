@@ -136,7 +136,7 @@ if (loggedIn && idParam === Auth.getProfile().data._id) {
       </Row>
       <Row>
       <Col>
-          <span>Age: {pet.age}</span>
+          <span>Age: {pet.age ? pet.age : `???`}</span>
         </Col>
       </Row>
       <Row>

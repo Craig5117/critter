@@ -48,7 +48,6 @@ const TailForm = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
     try {
       await addTail({
         variables: { tailText },

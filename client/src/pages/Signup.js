@@ -7,6 +7,7 @@ import { useMutation, useQuery } from '@apollo/react-hooks';
 import { ADD_PET } from '../utils/mutations';
 import { QUERY_PET_TYPES } from '../utils/queries';
 import Auth from '../utils/auth';
+import { Redirect } from 'react-router-dom';
 
 import './pages.css';
 
@@ -58,6 +59,11 @@ function Signup() {
       console.error(e);
     }
   };
+
+  if (Auth.loggedIn()) {
+    return <Redirect to="/profile" />
+  }
+
   return (
     <div className="w-100 m-0">
       <Col xs={11} md={6} className="pb-5 center-margin">
