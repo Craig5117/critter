@@ -16,7 +16,7 @@ import { idbPromise } from '../../utils/helpers';
 
 function PetProfile() {
   const loggedIn = Auth.loggedIn();
-  console.log(loggedIn)
+  // console.log('loggedIn? ', loggedIn)
   const dispatch = useDispatch();
   const { _id: idParam } = useParams();
   let userId = idParam ? idParam : Auth.getProfile().data._id;
@@ -85,7 +85,7 @@ function PetProfile() {
         type: 'me/SET_IMAGE',
         payload: pet.image,
       });
-      console.log('imageURL', pet.image);
+      // console.log('imageURL', pet.image);
     }
   }, [pet, idParam, dispatch]);
 

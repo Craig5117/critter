@@ -31,7 +31,7 @@ function Home() {
             // if there is no data and we aren't loading, we are offline
             // get the data from indexedDB
             idbPromise('tails', 'get').then((idbTails) => {
-                console.log('idbTails: ', idbTails)
+                // console.log('idbTails: ', idbTails)
                 setDbTails(idbTails.reverse());
             })
         }
@@ -48,7 +48,7 @@ function Home() {
               // if there is no data and we aren't loading, we are offline
             // get the data from indexedDB
             idbPromise('pets', 'get').then((idbPets) => {
-                console.log('idbPets: ', idbPets)
+                // console.log('idbPets: ', idbPets)
                 setDbPets(idbPets);
             })
         }

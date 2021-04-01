@@ -37,7 +37,7 @@ function Navigation() {
       type: 'pets/UPDATE_CURRENT_NAME',
       payload: searchedName,
     })
-    console.log(searchedName)
+    // console.log(searchedName)
   }
 
   function clearPetName() {
@@ -80,7 +80,7 @@ function Navigation() {
   const showPetFilter = useSelector((state) => state.nav.showPetFilter);
   const showSearchBar = useSelector((state) => state.nav.showSearchBar);
   useEffect(() => {
-    console.log(location);
+    // console.log(location);
     if (location === '/') {
       dispatch({
         type: 'nav/SHOW_PET_FILTER',

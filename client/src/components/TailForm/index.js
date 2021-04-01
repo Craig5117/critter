@@ -17,7 +17,7 @@ const TailForm = () => {
           query: QUERY_TAILS,
           variables: { postedBy: userId },
         });
-        console.log('this is tails', tails);
+        // console.log('this is tails', tails);
         cache.writeQuery({
           query: QUERY_TAILS,
           data: { tails: [addTail, ...tails] },
@@ -27,12 +27,12 @@ const TailForm = () => {
         console.error(e);
       }
 
-      console.log(
-        'cache.readQuery({query: QUERY_TAILS, variables: { postedBy: userId } }): ',
-        cache.readQuery({ query: QUERY_TAILS, variables: { postedBy: userId } })
-      );
+      // console.log(
+      //   'cache.readQuery({query: QUERY_TAILS, variables: { postedBy: userId } }): ',
+      //   cache.readQuery({ query: QUERY_TAILS, variables: { postedBy: userId } })
+      // );
       const { me } = cache.readQuery({ query: QUERY_ME });
-      console.log('this is me', me.tails);
+      // console.log('this is me', me.tails);
       cache.writeQuery({
         query: QUERY_ME,
         data: { me: { ...me, tails: [...me.tails, addTail] } },

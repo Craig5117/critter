@@ -31,7 +31,7 @@ function SingleTail(props){
           setTail(currentTail[0]);
         });
       }
-      console.log(tail)
+      // console.log(tail)
     }, [data, loading, tailId, tail])
 
     if (loading) {
