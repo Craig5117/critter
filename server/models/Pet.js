@@ -42,7 +42,8 @@ const petSchema = new Schema(
             required: true
         },
         relationshipStatus: {
-            type: String
+            type: String,
+            default: 'Seeking new friends.'
         },
         tails: [
             {
