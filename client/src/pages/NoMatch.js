@@ -1,6 +1,6 @@
 import React from "react";
 import Jumbotron from "../components/Jumbotron";
-
+import logo from '../images/sad-Critter.png';
 
 
 const NoMatch = () => {
@@ -13,8 +13,7 @@ const NoMatch = () => {
     <div>
       <Jumbotron> 
         <h1>
-
-          <img src={process.env.PUBLIC_URL + '/images/sad-Critter.png'} height="25%" width="25%" alt="logo" />
+          <img src={logo} height="25%" width="25%" alt="logo"/>
         </h1>
         <h1>404 Page Not Found, redirecting to home...</h1>
        

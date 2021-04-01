@@ -1,0 +1,12 @@
+.nav {
+  background-color: #badefc;
+  /* border-top: #9443b1 solid 1px; */
+  border-bottom: #9443b1 solid 1px;
+  color: #9443b1;
+}
+
+.button {
+  border-radius: 7px;
+  margin-right: 2px;
+  color: white !important;
+}
