@@ -13,6 +13,17 @@ import { useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import Auth from '../../utils/auth';
 import { idbPromise } from '../../utils/helpers';
+import dogType from '../../images/favicons/dog-con.ico';
+import catType from '../../images/favicons/cat-con.ico';
+import snakeType from '../../images/favicons/snake-con.ico';
+import fishType from '../../images/favicons/fish-con.ico';
+import lizardType from '../../images/favicons/lizard-con.ico';
+import cowType from '../../images/favicons/cow-icon.ico';
+import horseType from '../../images/favicons/horse-con.ico';
+import pigType from '../../images/favicons/pig-con.ico';
+import sheepType from '../../images/favicons/sheep-con.ico';
+import chickenType from '../../images/favicons/chicken-icon.ico';
+
 
 function PetProfile() {
   const loggedIn = Auth.loggedIn();
@@ -78,6 +89,37 @@ function PetProfile() {
     return <i className="fas fa-mars male-profile"></i>;
   }
   
+  const [petTypeIcon, setPetTypeIcon] = useState('')
+  useEffect(() => {
+    function setTypeIcon (type) {
+      switch (type) {
+        case 'Dog':
+          return dogType;
+        case 'Cat':
+          return catType;
+        case 'Snake':
+          return snakeType;
+        case 'Fish':
+          return fishType;
+        case 'Lizard':
+          return lizardType
+        case 'Cow':
+          return cowType;
+        case 'Horse':
+          return horseType;
+        case 'Pig':
+          return pigType;
+        case 'Sheep':
+          return sheepType;
+        case 'Chicken':
+          return chickenType;
+        default:
+          return '';
+      }
+    }
+    setPetTypeIcon(setTypeIcon(pet.petType))
+  }, [pet])
+
 if (!idParam && !loggedIn){
       return <Redirect to="/login" />
 } 
@@ -113,7 +155,8 @@ if (loggedIn && idParam === Auth.getProfile().data._id) {
       </Row>
       <Row>
         <Col md={4}>
-          <span>{pet.petType}</span>
+          
+          <span>I'm a </span><Image src={petTypeIcon} alt={`${pet.petType} icon`}></Image>
         </Col>
       </Row>
       <Row>
