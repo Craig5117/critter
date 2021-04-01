@@ -12,7 +12,7 @@ function Header() {
     <header className="header pt-2">
       <Col xs={10} md={3} className="mt-3">
       <Link className="header-link p-0" to="/">
-        <Image src={headerLogo} alt="critter tails logo" className="w-100"></Image>
+        <Image src={headerLogo} alt="critter tails logo" width="100%" height="100%"></Image>
       </Link>
       </Col>
       <Navigation />

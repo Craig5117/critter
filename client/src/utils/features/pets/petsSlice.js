@@ -4,7 +4,6 @@ const initialState = {
     currentPetType: '',
     currentPetName: ''
 }
-// petsList: [],
 
 export default function petsReducer(state = initialState, action) {
     switch (action.type) {
@@ -26,13 +25,6 @@ export default function petsReducer(state = initialState, action) {
                 petTypes: [...action.payload]
             }
         }
-        // case 'pets/UPDATE_PETS': {
-        //    return {
-        //         ...state,
-        //         petsList: [...action.payload]
-        //    } 
-        // }
-        // addPetType ?
         default: 
             return state;
     }

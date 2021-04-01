@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
-// import { validateEmail } from '../utils/helpers';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import { ADD_PET } from '../../utils/mutations';
 import { QUERY_PET_TYPES } from '../../utils/queries';

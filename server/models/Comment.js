@@ -27,9 +27,5 @@ const commentSchema = new Schema(
       }
 )
 
-// commentText {String, required, maxlength 3000}
-// username {String, required}
-// createdAt {Date, default, get}
-// getters true
 
 module.exports = commentSchema;

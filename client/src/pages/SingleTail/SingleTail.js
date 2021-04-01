@@ -20,8 +20,6 @@ function SingleTail(props){
         variables: { id: tailId }
         });
 
-    // const tail = data?.tail || {};
-
     useEffect(() => {
       if (data?.tail) {
         setTail(data.tail)

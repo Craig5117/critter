@@ -61,24 +61,6 @@ function PetProfile() {
     }
   }, [data, loadingPet, userId]);
 
-  // this code has issues with race conditions
-  // useEffect works better
-  // const pet = useMemo(() => {
-  //   if (data?.me) {
-  //     return data.me;
-  //   } else if (data?.pet) {
-  //     return data.pet;
-  //   } else if (!loadingPet) {
-  //     async function fetchOfflineData() {
-  //       const petData = await idbPromise('pets', 'get');
-  //       const currentPet = petData.filter((pet) => pet._id === userId);
-  //       return currentPet[0];
-  //     }
-  //     return fetchOfflineData();
-  //   }
-  //   return {};
-  // }, [data, loadingPet, userId]);
-
   useEffect(() => {
     if (pet && !idParam) {
       dispatch({
@@ -110,7 +92,7 @@ if (loggedIn && idParam === Auth.getProfile().data._id) {
         <Col xs={7} md={3}>
           {idParam ? (
             <div className="profile-image">
-              <Image className="w-100" src={pet.image} roundedCircle></Image>
+              <Image width="100%" height="100%" src={pet.image} alt={`${pet.username}'s profile image`} roundedCircle></Image>
             </div>
           ) : (
             <ProfileImage />
