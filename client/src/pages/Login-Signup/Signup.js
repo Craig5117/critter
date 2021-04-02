@@ -121,7 +121,8 @@ function Signup() {
               <Form.Label>How old are you in human years?</Form.Label>
               <Form.Control
                 required
-                type="text"
+                type="number"
+                name="age"
                 placeholder="Age"
                 onChange={handleChange}
               />
