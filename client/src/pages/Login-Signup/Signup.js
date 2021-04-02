@@ -120,7 +120,6 @@ function Signup() {
             <Form.Group controlId="formAge">
               <Form.Label>How old are you in human years?</Form.Label>
               <Form.Control
-                required
                 type="number"
                 name="age"
                 placeholder="Age"
